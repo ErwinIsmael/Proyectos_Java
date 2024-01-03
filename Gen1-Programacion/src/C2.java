@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class c2 {
+public class C2 {
     public static void main(String[] args) {
         //Crear un programa en Java que lea dos numeros enteros y la suma, la resta
         //la multiplicacion y la division de los numeros
