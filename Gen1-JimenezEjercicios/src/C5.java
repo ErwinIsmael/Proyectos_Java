@@ -18,23 +18,30 @@ public class C5 {
         System.out.println("Ingresa la cantidad de numeros que deseas ingresar");
         totalNum = s.nextInt();
 
-        for(int i = 1; i <= totalNum; i++){
+
+        for( int i = 0; i <= totalNum; i++){
 
             System.out.println("Ingresa el numero " + i);
             numero = s.nextInt();
-            promedioNumeros = totalNum + numero;
+            promedioNumeros = promedioNumeros + numero;
 
-            if (numero < numeroMayor){
-                numeroMayor = numero;
-                System.out.println("MENOR = " + numeroMayor);
 
-            }else if(numero > numeroMenor){
+            if(i == 0){
                 numeroMenor = numero;
-                System.out.println("MAYOR = " + numeroMenor);
+                numeroMayor = numero;
+
+            }else if (numero > numeroMayor){
+                numeroMayor = numero;
+                System.out.println("MAYOR = " + numeroMayor);
+
+            }else if(numero < numeroMenor){
+                numeroMenor = numero;
+                System.out.println("MENOR = " + numeroMenor);
             }
 
 
         }
+
         promedioNumeros = promedioNumeros / totalNum;
         System.out.println("La suma total de todos los numeros es = " + promedioNumeros);
         System.out.println("El numero mayor de los "+ totalNum +" es: " + numeroMayor );
