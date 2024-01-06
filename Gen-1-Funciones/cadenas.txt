@@ -1,0 +1,10 @@
+Objetos
+Mesa
+Salon
+Pizarra
+Laptop
+Computadora
+Mouse
+Libreta
+Pantalla
+Puerta
