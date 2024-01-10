@@ -1,6 +1,38 @@
 import java.util.Scanner;
 
 public class C4 {
+
+
+
+    static void solucionCorrecta(){
+        double alturaPrisma;
+        double diagonalMayor;
+        double diagonalMenor;
+        double areaRectangulo;
+        double catetoRestante;
+        double areaCaras;
+        double areaTapa;
+        double areaTapas;
+        double areaTotal;
+
+        Scanner s = new Scanner(System.in);
+
+        System.out.println("Ingresa el valor de la altura: ");
+        alturaPrisma = s.nextDouble();
+        System.out.println("Ingresa la diagonal menor");
+        diagonalMenor = s.nextDouble();
+        System.out.println("Ingresa la diagonal mayor");
+        diagonalMayor = s.nextDouble();
+
+        catetoRestante = Math.sqrt ( ((diagonalMayor/2) * (diagonalMayor/2) ) + ((diagonalMenor / 2) * (diagonalMenor/2)));
+        areaRectangulo = catetoRestante * alturaPrisma;
+        areaCaras = areaRectangulo * 4;
+        areaTapa = (diagonalMayor * diagonalMenor) / 2;
+        areaTapas = areaTapa * 2;
+        areaTotal = areaCaras + areaTapas;
+        System.out.println("El resultado es: "+ areaTotal);
+
+    }
     public static void main(String[] args) {
 
         //Obtener el area de cuerpo geometrico
@@ -13,6 +45,10 @@ public class C4 {
             // area X altura = volumen
             // area = (D X d) / 2
 
+
+
+        solucionCorrecta();
+        /*
         double altura;
         double dMayor;
         double dMenor;
@@ -32,5 +68,7 @@ public class C4 {
         volumen = area * altura;
 
         System.out.println("El area del cuerpo geometrico es: " + volumen);
+
+         */
     }
 }

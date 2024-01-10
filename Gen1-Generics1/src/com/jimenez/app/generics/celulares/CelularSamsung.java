@@ -16,20 +16,6 @@ public class CelularSamsung {
         System.out.println("Soy un celular Samsung y hago una llamada mediante mi red 8g");
     }
 
-    //Constructores
-
-    public CelularSamsung() {
-    }
-
-    public CelularSamsung(String modelo, String imei, Float memoriaRam, Float memoriaRom, Float capacidadBateria, Color color) {
-        this.modelo = modelo;
-        this.imei = imei;
-        this.memoriaRam = memoriaRam;
-        this.memoriaRom = memoriaRom;
-        this.capacidadBateria = capacidadBateria;
-        this.color = color;
-    }
-
 
     //setter and getter
 

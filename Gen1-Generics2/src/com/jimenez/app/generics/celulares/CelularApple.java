@@ -18,21 +18,6 @@ public class CelularApple {
     }
 
     //Constructor
-
-
-    public CelularApple() {
-    }
-
-    public CelularApple(String modelo, String imei, Float memoriaRam, Float memoriaRom, boolean botonSilencioEstado, Float capacidadBateria, Color color) {
-        this.modelo = modelo;
-        this.imei = imei;
-        this.memoriaRam = memoriaRam;
-        this.memoriaRom = memoriaRom;
-        this.botonSilencioEstado = botonSilencioEstado;
-        this.capacidadBateria = capacidadBateria;
-        this.color = color;
-    }
-
     //getter and setter
     public String getModelo() {
         return modelo;

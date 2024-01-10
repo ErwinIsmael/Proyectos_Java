@@ -4,6 +4,7 @@ import com.jimenez.app.generics.establecimientos.LaCasaDeTono;
 import com.jimenez.app.generics.establecimientos.Walmart;
 import com.jimenez.app.generics.repartidores.IUberEatsRepartidor;
 import com.jimenez.app.generics.repartidores.RepartidorFastDominosPizza;
+import com.jimenez.app.generics.repartidores.RepartidorNormalPizza;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -31,13 +32,18 @@ public class C1 {
         grandeCasaTono.setValoracion("5 estrellas");
         grandeCasaTono.setHoraApertura(LocalTime.of(8,0,0));
         grandeCasaTono.setHoraCierre(LocalTime.of(22, 30, 0));
+        grandeCasaTono.setDialaboral(Dias.MIERCOLES);
+        grandeCasaTono.setDireccion("San Bartolo, Naucalpan, Estado de Mexico");
 
         Walmart walmartMexico = new Walmart();
         walmartMexico.setInventario(inventarioProductos);
         walmartMexico.setFormatoTienda("Completa");
         walmartMexico.setDevolucion(true);
+        walmartMexico.setHoraApertura(LocalTime.of(8, 0, 0));
+        walmartMexico.setHoraCierre(LocalTime.of(10, 30,0));
 
         IUberEatsRepartidor repartidorFastDominos = new RepartidorFastDominosPizza();
+        IUberEatsRepartidor repartidorNormalDominos = new RepartidorNormalPizza();
 
 
         System.out.println(expressDominos.abrir());

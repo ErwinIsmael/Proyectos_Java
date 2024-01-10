@@ -19,18 +19,6 @@ public class CelularXiaomi {
     //Constructores
 
 
-    public CelularXiaomi() {
-    }
-
-    public CelularXiaomi(String modelo, String imei, Float memoriaRam, Float memoriaRom, Float capacidadBateria, Color color) {
-        this.modelo = modelo;
-        this.imei = imei;
-        this.memoriaRam = memoriaRam;
-        this.memoriaRom = memoriaRom;
-        this.capacidadBateria = capacidadBateria;
-        this.color = color;
-    }
-
     //getter and setter
     public String getModelo() {
         return modelo;

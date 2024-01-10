@@ -18,17 +18,7 @@ public class CelularSamsung {
 
     //Constructores
 
-    public CelularSamsung() {
-    }
 
-    public CelularSamsung(String modelo, String imei, Float memoriaRam, Float memoriaRom, Float capacidadBateria, Color color) {
-        this.modelo = modelo;
-        this.imei = imei;
-        this.memoriaRam = memoriaRam;
-        this.memoriaRom = memoriaRom;
-        this.capacidadBateria = capacidadBateria;
-        this.color = color;
-    }
 
 
     //setter and getter
