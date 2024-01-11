@@ -6,7 +6,7 @@ public class RepartidorNormalCasaTono implements IUberEatsRepartidor<LaCasaDeTon
 
     @Override
     public void repartir(LaCasaDeTono repartidor) {
-        System.out.println("Soy el repartidor de La Casa de Toño en este dia y llevo un pedido por lo menos en 1 hora ");
+        System.out.println("---> Soy el repartidor de La Casa de Toño en este dia y llevo un pedido por lo menos en 1 hora y media");
         System.out.println("Llevo los pedidos a domicilio");
     }
 }

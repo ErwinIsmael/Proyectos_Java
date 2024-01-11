@@ -14,7 +14,7 @@ public class RepartidorFastDominosPizza implements IUberEatsRepartidor<DominosPi
 
     @Override
     public void repartir(DominosPizza repartidor) {
-        System.out.println("Soy el repartidor  de Dominos Pizza y llevo un pedido en menos de 30 minutos");
+        System.out.println("---> Soy el repartidor  de Dominos Pizza y llevo un pedido en menos de 30 minutos");
         System.out.println("Llevo los pedidos a domicilio");
     }
 

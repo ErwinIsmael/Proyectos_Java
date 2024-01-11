@@ -2,11 +2,14 @@ package com.jimenez.app.rutas.filter;
 
 import com.jimenez.app.rutas.utils.ConexionBD;
 import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebFilter;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.sql.Connection;
 
+
+@WebFilter("/*")
 
 public class ConexionFilter implements Filter {
 

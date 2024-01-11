@@ -15,23 +15,22 @@ public class Walmart extends BaseEstablecimiento{
     public List<String> realizarVenta(String pedido) {
         System.out.println("Se vende un producto de tipo y es destinada para la entrega al repartidor en la direccion: " + direccion + " para el dia "+ dialaboral);
         for (int i = 0; i < inventario.size(); i++) {
-            if(Objects.equals(inventario.get(i), pedido)){
+            if(Objects.equals(inventario.get(i).toUpperCase(), pedido.toUpperCase())){
                 inventario.remove(i);
             }
-
-            System.out.println("Inventario actual tras la venta del producto: " + inventario);
         }
+        System.out.println("Inventario actual tras la venta del producto: " + inventario);
         return inventario;
     }
 
     @Override
     public String abrir() {
-        return "El establecimiento tiene apertura a las: " + horaApertura + " a.m. y horario de cierre a las " + horaCierre +" p.m.";
+        return "Walmart tiene apertura a las: " + horaApertura + " a.m. y horario de cierre a las " + horaCierre +" p.m.";
     }
 
-    public void devolucion(String devolucion){
-        System.out.println("El producto devuelto es: " + devolucion);
-        inventario.add(devolucion);
+    public void cargaInventario(String producto){
+        System.out.println("Se carga a inventario: " + producto);
+        inventario.add(producto.toUpperCase());
         System.out.println("Actualizacion de inventario actual" + inventario);
 
     }

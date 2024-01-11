@@ -2,9 +2,7 @@ import com.jimenez.app.generics.enums.Dias;
 import com.jimenez.app.generics.establecimientos.DominosPizza;
 import com.jimenez.app.generics.establecimientos.LaCasaDeTono;
 import com.jimenez.app.generics.establecimientos.Walmart;
-import com.jimenez.app.generics.repartidores.IUberEatsRepartidor;
-import com.jimenez.app.generics.repartidores.RepartidorFastDominosPizza;
-import com.jimenez.app.generics.repartidores.RepartidorNormalPizza;
+import com.jimenez.app.generics.repartidores.*;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -17,8 +15,11 @@ public class C1 {
                 inventarioPizza.add("Hawuaina");
                 inventarioPizza.add("Peperoni");
                 inventarioPizza.add("Chorizo");
-        List<String> inventarioPlatillos = Arrays.asList("Pollo al Orange","Pozole","Arroz con mole","Costilla","Ensalada","Res");
-        List<String> inventarioProductos = Arrays.asList("Cereal","Leche","Latas de atun","Arroz","Frijol","Aceite");
+        List<String> inventarioPlatillos = new ArrayList<>();
+                inventarioPlatillos.add("Pollo al Orange");
+                inventarioPlatillos.add("Pozole");
+                inventarioPlatillos.add("Arroz con mole");
+        List<String> inventarioProductos = new ArrayList<>();
 
         DominosPizza expressDominos = new DominosPizza();
         expressDominos.setTipoPizzas(inventarioPizza);
@@ -41,19 +42,42 @@ public class C1 {
         walmartMexico.setDevolucion(true);
         walmartMexico.setHoraApertura(LocalTime.of(8, 0, 0));
         walmartMexico.setHoraCierre(LocalTime.of(10, 30,0));
+        walmartMexico.setDialaboral(Dias.VIERNES);
+        walmartMexico.setDireccion("San Felipe, Puebla");
 
         IUberEatsRepartidor repartidorFastDominos = new RepartidorFastDominosPizza();
         IUberEatsRepartidor repartidorNormalDominos = new RepartidorNormalPizza();
-
+        IUberEatsRepartidor repartidorFastCasaTono = new RepartidorFastCasaTono();
+        IUberEatsRepartidor repartidorNormalCasaTono = new RepartidorNormalCasaTono();
+        IUberEatsRepartidor repartidorFastWalmart = new RepartidorFastWalmart();
+        IUberEatsRepartidor repartidorNormalWalmart = new RepartidorNormalWalmart();
 
         System.out.println(expressDominos.abrir());
         expressDominos.prepararPizza("3 quesos");
         expressDominos.realizarVenta("Peperoni");
         repartidorFastDominos.repartir(expressDominos);
+        expressDominos.realizarVenta("Hawuaina");
+        repartidorNormalDominos.repartir(expressDominos);
 
+        System.out.println("*--------------------------------------------------------------------------*");
 
+        System.out.println(grandeCasaTono.abrir());
+        grandeCasaTono.prepararPlatillo("Enchiladas");
+        grandeCasaTono.realizarVenta("Pozole");
+        repartidorFastCasaTono.repartir(grandeCasaTono);
+        grandeCasaTono.realizarVenta("Enchiladas");
+        repartidorNormalCasaTono.repartir(grandeCasaTono);
 
+        System.out.println("*--------------------------------------------------------------------------*");
 
+        System.out.println(walmartMexico.abrir());
+        walmartMexico.cargaInventario("Cereal");
+        walmartMexico.cargaInventario("Arroz");
+        walmartMexico.cargaInventario("Chocolate");
+        walmartMexico.realizarVenta("Chocolate");
+        repartidorFastWalmart.repartir(walmartMexico);
+        walmartMexico.realizarVenta("Arroz");
+        repartidorNormalWalmart.repartir(walmartMexico);
 
     }
 }

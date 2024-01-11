@@ -13,26 +13,25 @@ public class LaCasaDeTono extends BaseEstablecimiento {
     public List<String> realizarVenta(String pedido) {
         System.out.println("Se vende un pedido y es destinada para la entrega al repartidor en la direccion "+ direccion + " para el dia "+ dialaboral);
         for (int i = 0; i < platillos.size(); i++) {
-            if(Objects.equals(platillos.get(i), pedido)){
+            if(Objects.equals(platillos.get(i).toUpperCase(), pedido.toUpperCase())){
                 platillos.remove(i);
             }
-
-            System.out.println("Platillos aun en lista de espera a entregar tras la venta: " + platillos);
         }
+        System.out.println("----> Platillo enviado con el repartidor, lista aun en espera a entregar tras la venta: \n" + platillos);
         return platillos;
 
     }
 
     @Override
     public String abrir() {
-        return "El establecimiento tiene apertura a las: " + horaApertura + " a.m. y horario de cierre a las " + horaCierre +" p.m.";
+        return "La casa de Toño tiene apertura a las: " + horaApertura + " a.m. y horario de cierre a las " + horaCierre +" p.m.";
     }
 
     //metodos
     public void prepararPlatillo(String platillo){
-        System.out.println("Se prepara el platillo y es agregado a la lista de espera para entregar");
+        System.out.println("Se prepara el platillo y es agregado a la lista de espera para entregar:");
         platillos.add(platillo);
-        System.out.println("Lista actual de platillos a entregar: "+ platillos);
+        System.out.println("---> Lista actual de platillos a entregar: -->"+ platillos);
     }
 
     public void contratar(){

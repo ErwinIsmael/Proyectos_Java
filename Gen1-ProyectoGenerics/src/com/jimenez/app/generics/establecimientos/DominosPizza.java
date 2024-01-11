@@ -16,7 +16,7 @@ public class DominosPizza extends BaseEstablecimiento {
     public List<String> realizarVenta(String pedido) {
         System.out.println("Se vende una pizza y es destinada para la entrega al repartidor en la direccion" + direccion + " para el dia "+ dialaboral);
         for (int i = 0; i < tipoPizzas.size(); i++) {
-            if(Objects.equals(tipoPizzas.get(i), pedido)){
+            if(Objects.equals(tipoPizzas.get(i).toUpperCase(), pedido.toUpperCase())){
                 tipoPizzas.remove(i);
             }
         }
@@ -26,13 +26,13 @@ public class DominosPizza extends BaseEstablecimiento {
 
     @Override
     public String abrir() {
-        return "La pizzeria abre a las " + horaApertura + " a.m.";
+        return "Dominos Pizza abre a las " + horaApertura + " a.m.";
     }
 
     //metodos
     public void prepararPizza(String pizza){
         System.out.println("Se prepara la pizza y esta se agrega en la lista de pedidos");
-        this.tipoPizzas.add(pizza);
+        tipoPizzas.add(pizza);
         System.out.println(tipoPizzas);
     }
 
