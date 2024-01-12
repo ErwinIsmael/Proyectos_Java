@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.jimenez.app.rutas</groupId>
-    <artifactId>Gen1-Rutas</artifactId>
+    <artifactId>Gen1-Proyecto-Sistema</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -13,7 +13,6 @@
         <maven.compiler.target>18</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
 
     <packaging>war</packaging>
     <dependencies>
@@ -33,8 +32,9 @@
             <version>2.10.1</version>
         </dependency>
 
-
     </dependencies>
+
+
 
     <build>
         <plugins>
@@ -63,6 +63,7 @@
 
         </plugins>
     </build>
+
 
 
 </project>
