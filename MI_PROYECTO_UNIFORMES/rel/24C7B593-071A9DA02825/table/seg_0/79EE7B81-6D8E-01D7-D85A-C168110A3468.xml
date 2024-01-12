@@ -1,0 +1,211 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="79EE7B81-6D8E-01D7-D85A-C168110A3468" schemaObject="BF3BDA6F-4594-FAEE-712A-8C9E3B47F27C" name="PEDIDOS">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>PEDIDOS</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:20 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_PEDIDO" id="7287E0DB-FC10-77B1-21BE-C83E6DB6010B">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>PEDIDOS</sourceObjSchema>
+<sourceObjName>ID_PEDIDO</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="UNIFORME_ID" id="9F9875EC-3774-F261-9841-E8A8F20F154D">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>PEDIDOS</sourceObjSchema>
+<sourceObjName>UNIFORME_ID</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FEE4F0BD-5EC8-6BA0-30F1-165F4CAA9D58" referredColumn="BC75547B-D868-7B35-5050-AF16D35B364A"/>
+</associations>
+</Column>
+<Column name="CLIENTE_ID" id="D3DABCBD-47A4-C8DF-0CD2-4FCD68C6BA00">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>PEDIDOS</sourceObjSchema>
+<sourceObjName>CLIENTE_ID</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CC751A6D-E3FE-D21B-C206-A0CD7DE059DC" referredColumn="002B123C-C934-8477-3C21-66065562F17B"/>
+</associations>
+</Column>
+<Column name="CANTIDAD" id="C4782227-5B48-8FF5-A795-51EF5D7EB2BE">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>PEDIDOS</sourceObjSchema>
+<sourceObjName>CANTIDAD</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FECHA_SOLICITUD" id="05B7038E-3DC4-8FF8-D3DB-2FE5288D17CE">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>PEDIDOS</sourceObjSchema>
+<sourceObjName>FECHA_SOLICITUD</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FECHA_ENTREGA" id="6DAA388E-CB5C-C0B7-2323-96C71994C9BC">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>PEDIDOS</sourceObjSchema>
+<sourceObjName>FECHA_ENTREGA</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ANTICIPO" id="6E8F8845-C583-2FC8-3A5D-64E81AB75D64">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>PEDIDOS</sourceObjSchema>
+<sourceObjName>ANTICIPO</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<dataTypePrecision>126</dataTypePrecision>
+<ownDataTypeParameters>,126,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ESTATUS" id="D208CEF6-7927-A9E4-4946-9D851DB56218">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>PEDIDOS</sourceObjSchema>
+<sourceObjName>ESTATUS</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DESCRIPCION" id="0B561366-BA63-A1E5-4BE3-9F3E850AB0FA">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>PEDIDOS</sourceObjSchema>
+<sourceObjName>DESCRIPCION</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>500 BYTE</dataTypeSize>
+<ownDataTypeParameters>500 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TALLA" id="1B342EFC-AB48-2771-4DD9-A32E937B54BF">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>PEDIDOS</sourceObjSchema>
+<sourceObjName>TALLA</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E4979489-E721-4A46-DC62-4E3F40230202" name="PEDIDOS_PK">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>PEDIDOS_PK</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:22 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7287E0DB-FC10-77B1-21BE-C83E6DB6010B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DB6FBF0F-AD57-AFCC-6D26-4171F62A695F" schemaObject="BF3BDA6F-4594-FAEE-712A-8C9E3B47F27C" name="PEDIDOS_PK">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>PEDIDOS_PK</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7287E0DB-FC10-77B1-21BE-C83E6DB6010B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CA079A20-FB18-1C3A-8D52-38B4917EC9A3" name="CLIENTE_FK">
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:22 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D3DABCBD-47A4-C8DF-0CD2-4FCD68C6BA00"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BF3CE37B-EC48-86BD-2326-C5F194726AC0" name="UNIFORME_FK">
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:22 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9F9875EC-3774-F261-9841-E8A8F20F154D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

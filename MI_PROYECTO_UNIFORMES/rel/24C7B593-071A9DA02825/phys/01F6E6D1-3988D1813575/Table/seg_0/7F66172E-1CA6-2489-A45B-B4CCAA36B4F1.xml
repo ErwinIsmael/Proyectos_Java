@@ -1,0 +1,82 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev20c class="oracle.dbtools.crest.model.design.storage.oracle.v20c.TableProxyOraclev20c" name="UNIFORMES" directorySegmentName="seg_0" id="7F66172E-1CA6-2489-A45B-B4CCAA36B4F1">
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:20 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<schemaObject>BF3BDA6F-4594-FAEE-712A-8C9E3B47F27C</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>82908FAD-72B3-B9EE-7FAE-E1ABBCC1DD8D</segment>
+<tableSpace>EBDEE52A-7A63-26BD-E5E6-261E4852898B</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="PRECIO" id="05264458-AA50-6405-BA2F-3606385D4BD2">
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DESCRIPCION" id="0799471B-8218-C9C0-822C-5959472ADBA2">
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TIPO_MATERIAL" id="56D0A988-EDCA-8D6B-EDE7-9CB36CE023D4">
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TIPO_UNIFORME" id="A50969AC-88CA-FD8F-866C-301F6359B387">
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ESCUELA_ID" id="B9D4CF03-9DB3-5B1F-0C21-1098B037DEC8">
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID_UNIFORME" id="BC75547B-D868-7B35-5050-AF16D35B364A">
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="COLOR" id="C5951732-1D33-4E59-30AD-731FFBA47C07">
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="UNIFORME_PK" id="F6A9EE27-A67D-60CB-0E7C-CF28DC02825A">
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<schemaObject>BF3BDA6F-4594-FAEE-712A-8C9E3B47F27C</schemaObject>
+<segment>60C1C679-37B9-1850-F35F-18129D4FE4CF</segment>
+<tableSpace>EBDEE52A-7A63-26BD-E5E6-261E4852898B</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="ESCUELA_FK" id="5AE88F26-5B93-448B-43FC-0217A985DB80">
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:22 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="UNIFORME_PK" id="9C3165B0-3FE5-2D8C-DEB8-ECDBA3BB421D">
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:22 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<segment>60C1C679-37B9-1850-F35F-18129D4FE4CF</segment>
+<tableSpace>EBDEE52A-7A63-26BD-E5E6-261E4852898B</tableSpace>
+<existingIndex>F6A9EE27-A67D-60CB-0E7C-CF28DC02825A</existingIndex>
+<indexSegment>60C1C679-37B9-1850-F35F-18129D4FE4CF</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev20c>

@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="AD42C3AC-3EDB-D5F1-B433-B7DA79176133" containerWithKeyObject="38431030-CDE4-F3E3-499D-4A68821E23DE" localFKIndex="B46D0154-1126-B01D-AD6D-E1B8196E6BDB" name="TALLER_FK">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>TALLER_FK</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:22 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<referredTableLongName>SYSTEM.TALLERES</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>0E3A0718-5B42-5E98-8636-8718F6B930D5</referredTableID>
+<keyObject>12BF7666-B442-D739-F729-569A9684633A</keyObject>
+<referredKeyID>12BF7666-B442-D739-F729-569A9684633A</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_TALLER</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,0 +1,146 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7F0B0528-35B9-7E38-A1DE-9DCE3EDD6959" schemaObject="BF3BDA6F-4594-FAEE-712A-8C9E3B47F27C" name="DIRECCIONES">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>DIRECCIONES</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:20 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_DIRECCION" id="0D239034-D430-D3D6-E6D7-7BC381F9649D">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>DIRECCIONES</sourceObjSchema>
+<sourceObjName>ID_DIRECCION</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CALLE" id="F72AE146-A317-4A0B-86C0-FBA26370EFC8">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>DIRECCIONES</sourceObjSchema>
+<sourceObjName>CALLE</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45 BYTE</dataTypeSize>
+<ownDataTypeParameters>45 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NUMERO" id="E89BC3AC-D7EA-3D3D-025A-342112CA0777">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>DIRECCIONES</sourceObjSchema>
+<sourceObjName>NUMERO</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45 BYTE</dataTypeSize>
+<ownDataTypeParameters>45 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="COLONIA" id="074351AC-2DC6-7ED2-D9DA-D462328C0995">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>DIRECCIONES</sourceObjSchema>
+<sourceObjName>COLONIA</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45 BYTE</dataTypeSize>
+<ownDataTypeParameters>45 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CIUDAD" id="BFCBAFDC-A44F-50C6-957F-4C8AC44AAA4A">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>DIRECCIONES</sourceObjSchema>
+<sourceObjName>CIUDAD</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45 BYTE</dataTypeSize>
+<ownDataTypeParameters>45 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ESTADO" id="6DD1D0AA-617C-6DA6-9ADF-A65CC06D4C84">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>DIRECCIONES</sourceObjSchema>
+<sourceObjName>ESTADO</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45 BYTE</dataTypeSize>
+<ownDataTypeParameters>45 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CP" id="990A53D4-09AD-12BE-05E3-8AE5E8DC23B5">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>DIRECCIONES</sourceObjSchema>
+<sourceObjName>CP</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45 BYTE</dataTypeSize>
+<ownDataTypeParameters>45 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="06BC2894-281A-A971-2E3B-2477714792B6" name="DIRECCIONES_PK">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>DIRECCIONES_PK</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:22 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0D239034-D430-D3D6-E6D7-7BC381F9649D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BD8A7EEF-B716-CB5D-40B3-6752DA809C5A" schemaObject="BF3BDA6F-4594-FAEE-712A-8C9E3B47F27C" name="DIRECCIONES_PK">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>DIRECCIONES_PK</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0D239034-D430-D3D6-E6D7-7BC381F9649D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

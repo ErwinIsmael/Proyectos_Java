@@ -1,0 +1,116 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E4C06425-71D5-AB8B-13F8-3F3452462B84" schemaObject="BF3BDA6F-4594-FAEE-712A-8C9E3B47F27C" name="CLIENTES">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>CLIENTES</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:20 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_CLIENTE" id="002B123C-C934-8477-3C21-66065562F17B">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>CLIENTES</sourceObjSchema>
+<sourceObjName>ID_CLIENTE</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOMBRE" id="FD3E7240-BF5B-B24B-D012-865ECD8CA186">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>CLIENTES</sourceObjSchema>
+<sourceObjName>NOMBRE</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200 BYTE</dataTypeSize>
+<ownDataTypeParameters>200 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="AP_PATERNO" id="A43C2633-FA79-FE41-55BD-8F8CC91F9347">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>CLIENTES</sourceObjSchema>
+<sourceObjName>AP_PATERNO</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200 BYTE</dataTypeSize>
+<ownDataTypeParameters>200 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="AP_MATERNO" id="80120ADC-FDA1-6C57-67FE-3AEA38A75F61">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>CLIENTES</sourceObjSchema>
+<sourceObjName>AP_MATERNO</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200 BYTE</dataTypeSize>
+<ownDataTypeParameters>200 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TELEFONO" id="5F4D1359-243F-023E-8FF1-9A6CCD833121">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>CLIENTES</sourceObjSchema>
+<sourceObjName>TELEFONO</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45 BYTE</dataTypeSize>
+<ownDataTypeParameters>45 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1BDC4FF2-700A-AC3F-AAF4-0AAFA14879F8" name="CLIENTE_PK">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>CLIENTE_PK</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:22 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="002B123C-C934-8477-3C21-66065562F17B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="120D04FA-124E-B3D7-F4FE-9FA94888D27A" schemaObject="BF3BDA6F-4594-FAEE-712A-8C9E3B47F27C" name="CLIENTE_PK">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>CLIENTE_PK</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="002B123C-C934-8477-3C21-66065562F17B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

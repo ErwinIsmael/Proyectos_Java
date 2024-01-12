@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="FEE4F0BD-5EC8-6BA0-30F1-165F4CAA9D58" containerWithKeyObject="79EE7B81-6D8E-01D7-D85A-C168110A3468" localFKIndex="BF3CE37B-EC48-86BD-2326-C5F194726AC0" name="UNIFORME_FK">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>UNIFORME_FK</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:22 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<referredTableLongName>SYSTEM.UNIFORMES</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>7F66172E-1CA6-2489-A45B-B4CCAA36B4F1</referredTableID>
+<keyObject>9C3165B0-3FE5-2D8C-DEB8-ECDBA3BB421D</keyObject>
+<referredKeyID>9C3165B0-3FE5-2D8C-DEB8-ECDBA3BB421D</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_UNIFORME</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

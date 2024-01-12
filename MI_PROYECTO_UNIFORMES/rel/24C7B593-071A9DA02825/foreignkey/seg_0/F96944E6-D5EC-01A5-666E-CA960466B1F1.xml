@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="F96944E6-D5EC-01A5-666E-CA960466B1F1" containerWithKeyObject="38431030-CDE4-F3E3-499D-4A68821E23DE" localFKIndex="C7A79385-4E3D-6840-4BCF-B60FF92F544E" name="PEDIDOS_FK">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>PEDIDOS_FK</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:22 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<referredTableLongName>SYSTEM.PEDIDOS</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>79EE7B81-6D8E-01D7-D85A-C168110A3468</referredTableID>
+<keyObject>E4979489-E721-4A46-DC62-4E3F40230202</keyObject>
+<referredKeyID>E4979489-E721-4A46-DC62-4E3F40230202</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_PEDIDO</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

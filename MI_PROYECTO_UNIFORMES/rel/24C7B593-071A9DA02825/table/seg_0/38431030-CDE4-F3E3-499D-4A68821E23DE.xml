@@ -1,0 +1,123 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="38431030-CDE4-F3E3-499D-4A68821E23DE" schemaObject="BF3BDA6F-4594-FAEE-712A-8C9E3B47F27C" name="CAPTURAS">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>CAPTURAS</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:20 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_CAPTURA" id="15A8E6BC-9580-4093-2B59-AB15F0A5FC4C">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>CAPTURAS</sourceObjSchema>
+<sourceObjName>ID_CAPTURA</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TALLER_ID" id="E7E18F46-6FAF-CDF0-D13F-BC6289EA2A44">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>CAPTURAS</sourceObjSchema>
+<sourceObjName>TALLER_ID</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AD42C3AC-3EDB-D5F1-B433-B7DA79176133" referredColumn="4CB295AE-2173-915F-EC91-E5D0876EDCAC"/>
+</associations>
+</Column>
+<Column name="PEDIDO_ID" id="76DDC16A-1EBD-AED6-79D9-55D89B72951F">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>CAPTURAS</sourceObjSchema>
+<sourceObjName>PEDIDO_ID</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F96944E6-D5EC-01A5-666E-CA960466B1F1" referredColumn="7287E0DB-FC10-77B1-21BE-C83E6DB6010B"/>
+</associations>
+</Column>
+<Column name="FECHA_CAPTURA" id="547C54E2-B301-1DD4-569B-832572FC45E9">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>CAPTURAS</sourceObjSchema>
+<sourceObjName>FECHA_CAPTURA</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="02C10EE5-00E5-41E3-1560-7C608DC7543E" name="CAPTURAS_PK">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>CAPTURAS_PK</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:22 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="15A8E6BC-9580-4093-2B59-AB15F0A5FC4C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="66C1453B-638A-8CA0-F8AA-739C28E63E48" schemaObject="BF3BDA6F-4594-FAEE-712A-8C9E3B47F27C" name="CAPTURAS_PK">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>CAPTURAS_PK</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:21 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="15A8E6BC-9580-4093-2B59-AB15F0A5FC4C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C7A79385-4E3D-6840-4BCF-B60FF92F544E" name="PEDIDOS_FK">
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:22 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="76DDC16A-1EBD-AED6-79D9-55D89B72951F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B46D0154-1126-B01D-AD6D-E1B8196E6BDB" name="TALLER_FK">
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:22 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E7E18F46-6FAF-CDF0-D13F-BC6289EA2A44"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

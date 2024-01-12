@@ -1,0 +1,45 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<UserOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.UserOraclev10g" name="MDSYS" directorySegmentName="seg_0" id="MDSYS">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjName>MDSYS</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:17:55 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<schemaObject>421DA01A-261F-5273-29BF-FE8798B49014</schemaObject>
+<nullInstance>true</nullInstance>
+<storableNullInstance>true</storableNullInstance>
+<privileges>INHERIT ANY PRIVILEGES, ADMINISTER DATABASE TRIGGER, CREATE TRIGGER, CREATE ANY SEQUENCE, CREATE SEQUENCE, CREATE VIEW, DROP PUBLIC SYNONYM, CREATE PUBLIC SYNONYM, CREATE TABLE</privileges>
+<profile>DEFAULT</profile>
+<quotaItems>
+<QuotaItem class="oracle.dbtools.crest.model.design.storage.oracle.v10g.QuotaItemOraclev10g" name="QuotaItem1" id="BC3FD936-A0FC-CC6D-C626-0D51D82805D4">
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:21:18 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+</QuotaItem>
+<QuotaItem class="oracle.dbtools.crest.model.design.storage.oracle.v10g.QuotaItemOraclev10g" name="QuotaItem2" id="755AEDF0-E74D-E97D-FC57-F0A95C498DFF">
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:21:18 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+</QuotaItem>
+<QuotaItem class="oracle.dbtools.crest.model.design.storage.oracle.v10g.QuotaItemOraclev10g" name="QuotaItem1" id="1F072EAA-7B48-234D-1796-B8F2CCD59A17">
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:22:16 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+</QuotaItem>
+<QuotaItem class="oracle.dbtools.crest.model.design.storage.oracle.v10g.QuotaItemOraclev10g" name="QuotaItem2" id="63D13FA2-BC17-F448-AE0C-95528DA60A7B">
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:22:16 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+</QuotaItem>
+<QuotaItem class="oracle.dbtools.crest.model.design.storage.oracle.v10g.QuotaItemOraclev10g" name="QuotaItem1" id="24904974-F615-462E-6107-F57910A39B94">
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:24:10 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+</QuotaItem>
+<QuotaItem class="oracle.dbtools.crest.model.design.storage.oracle.v10g.QuotaItemOraclev10g" name="QuotaItem2" id="FC15B584-39C0-6B93-04D2-3B062D39778B">
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:24:10 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+</QuotaItem>
+</quotaItems>
+</UserOraclev10g>

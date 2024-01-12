@@ -1,0 +1,22 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="MI_PROYECTO_UNIFORMES" id="95FF6BDF-43BC-3F4F-A2CB-9B99AE6603F5" version="3.5">
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:17:19 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>95FF6BDF-43BC-3F4F-A2CB-9B99AE6603F5</designId>
+<usedDesignStorageDescriptors>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="A15A1374-FE37-72B8-3849-3C0179C0E73F">
+<designStoragePath>C:\</designStoragePath>
+</designDescr>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="13A8D34D-E028-3B97-AF6F-A54F02147D16">
+<designStoragePath>C:\</designStoragePath>
+</designDescr>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="1D73C12E-C5B0-753E-9387-254830491BC1">
+<designStoragePath>C:\</designStoragePath>
+</designDescr>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="B7973188-B562-27B4-D57A-FE71B767FA83">
+<designStoragePath>C:\</designStoragePath>
+</designDescr>
+</usedDesignStorageDescriptors>
+</OSDM_Design>

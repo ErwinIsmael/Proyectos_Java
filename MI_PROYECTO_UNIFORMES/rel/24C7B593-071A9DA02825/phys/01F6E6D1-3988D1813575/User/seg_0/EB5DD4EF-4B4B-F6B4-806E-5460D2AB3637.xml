@@ -1,0 +1,12 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<UserOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.UserOraclev10g" name="SYSTEM" directorySegmentName="seg_0" id="EB5DD4EF-4B4B-F6B4-806E-5460D2AB3637">
+<sourceConnName>ConexionInicial</sourceConnName>
+<sourceObjName>SYSTEM</sourceObjName>
+<createdBy>TRJava-09</createdBy>
+<createdTime>2024-01-12 09:19:20 UTC</createdTime>
+<ownerDesignName>MI_PROYECTO_UNIFORMES</ownerDesignName>
+<schemaObject>BF3BDA6F-4594-FAEE-712A-8C9E3B47F27C</schemaObject>
+<privileges>GLOBAL QUERY REWRITE, CREATE MATERIALIZED VIEW, SELECT ANY TABLE, CREATE TABLE, UNLIMITED TABLESPACE</privileges>
+<privilegesWithAdminOption>DEQUEUE ANY QUEUE, ENQUEUE ANY QUEUE, MANAGE ANY QUEUE</privilegesWithAdminOption>
+<profile>DEFAULT</profile>
+</UserOraclev10g>
