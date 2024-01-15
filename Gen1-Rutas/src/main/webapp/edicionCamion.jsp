@@ -1,12 +1,18 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@page import="java.util.*" %>
+<%@page import="com.jimenez.app.rutas.models.enums.*" %>
 
 
 
 <%
   Map<String, String> errores = (Map<String, String>) request.getAttribute("errores");
+  Camion camion = (Camion) request.getAttribute("camion");
+  Boolean estado = camion.getDisponibilidad();
+  String disponible = estado == true ? "checked";
 %>
 
+ <%Marcas[] marcasEnum = Marcas.values();%>
+ <%Tipos[] tiposEnum = Tipos.values();%>
 
 
 <!DOCTYPE html>
@@ -22,9 +28,10 @@
             crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
-    <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
 
 </head>
@@ -55,7 +62,7 @@
                                 class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="<%=request.getContextPath()%>/choferes/listar">Lista Choferes</a></li>
-                            <li><a href="<%=request.getContextPath()%>/choferes/alta">Alta Chofer</a></li>
+                            <li><a href="<%=request.getContextPath()%>/choferes/alta">Alta Choferes</a></li>
 
 
                         </ul>
@@ -98,7 +105,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2>Formulario Alta Chofer</h2>
+                <h2>Formulario Alta Camion</h2>
             </div>
         </div>
 
@@ -112,105 +119,97 @@
             <%}%>
 
         <div class="row">
-            <form action="<%=request.getContextPath()%>/choferes/alta" method="post">
+            <form action="<%=request.getContextPath()%>/camiones/alta" method="post">
+                <input type="hidden" name="id" value="<%=camion.getId()%>">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label for="">Nombre</label>
+                        <label for="">Matricula</label>
                         <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-                        <input type="text" name="nombre" id="nombre" class="form-control" value="${param.nombre}">
+                        <input type="text" name="matricula" id="matricula" class="form-control" value="<%=camion.getMatricula() != null? camion.getMatricula(): ""%>">
                         <%
-                            if(errores != null && errores.containsKey("nombre")){
-                                out.println("<span class='text-danger'>"+ errores.get("nombre") +"</span>");
+                            if(errores != null && errores.containsKey("matricula")){
+                                out.println("<span class='text-danger'>"+ errores.get("matricula") +"</span>");
                             }
                         %>
                     </div>
+                    <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
 
                     <div class="form-group">
-                        <label for="">Apellido Paterno</label>
-                        <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-                        <input type="text" name="apPaterno" id="apPaterno" class="form-control" value="${param.apPaterno}">
-                        <%
-                            if(errores != null && errores.containsKey("apPaterno")){
-                                out.println("<span class='text-danger'>"+ errores.get("apPaterno") +"</span>");
-                            }
-                        %>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="">Apellido Materno</label>
-                        <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-                        <input type="text" name="apMaterno" id="apMaterno" class="form-control" value="${param.apMaterno}">
-                        <%
-                            if(errores != null && errores.containsKey("apMaterno")){
-                                out.println("<span class='text-danger'>"+ errores.get("apMaterno") +"</span>");
-                            }
-                        %>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="">Licencia</label>
-                        <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-                        <input type="text" name="licencia" id="licencia" class="form-control" value="${param.licencia}">
-                        <%
-                            if(errores != null && errores.containsKey("licencia")){
-                                out.println("<span class='text-danger'>"+ errores.get("licencia") +"</span>");
-                            }
-                        %>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="">Telefono</label>
-                        <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-                        <input type="text" name="telefono" id="telefono" class="form-control" value="${param.telefono}">
-                        <%
-                            if(errores != null && errores.containsKey("telefono")){
-                                out.println("<span class='text-danger'>"+ errores.get("telefono") +"</span>");
-                            }
-                        %>
+                        <label for="">Tipo camion</label>
+                        <select class="form-control" id="tipoCamion" name="tipoCamion" value="<%=camion.getTipoCamion() != null? camion.getTipoCamion(): ""%>">
+                            <% for (Tipos tipo : tiposEnum) { %>
+                                  <option ><%= tipo.name() %></option>
+                            <% } %>
+                        </select>
                     </div>
 
 
                     <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-                    <!--
-                    <div class="form-group">
-                        <label for="">Fecha Nacimiento</label>
-
-                        <input type="text" name="fechaNacimiento" id="fechaNacimiento" class="form-control" value="${param.fechaNacimiento}">
-                        <%
-                            if(errores != null && errores.containsKey("fechaNacimiento")){
-                                out.println("<span class='text-danger'>"+ errores.get("fechaNacimiento") +"</span>");
-                            }
-                        %>
-                    </div>
-                -->
 
                     <div class="form-group">
-                        <label for="modelo">Fecha Nacimiento</label>
-                        <input type="text" name="fechaNacimiento" id="fechaNacimiento" class="form-control datepicker" value="${param.fechaNacimiento}">
+                        <label for="">Modelo</label>
+                        <select class="form-control" id="modelo" name="modelo" value="<%=camion.getModelo() != null? camion.getModelo(): ""%></select>">
+                            <option style="display:none;">--seleccionar--</option>
+                            <%
+                            int currentYear = java.time.Year.now().getValue();
+                            for (int year = 2003; year <= currentYear + 1; year++) {
+                            %>
+                                <option><%= year %></option>
+                            <% } %>
+                        </select>
                         <%
-                            if (errores != null && errores.containsKey("fechaNacimiento")) {
-                                out.println("<span class='text-danger'>" + errores.get("fechaNacimiento") + "</span>");
+                            if(errores != null && errores.containsKey("modelo")){
+                                out.println("<span class='text-danger'>"+ errores.get("modelo") +"</span>");
                             }
                         %>
                     </div>
 
-                    <script>
-                        $(document).ready(function(){
-                            $('.datepicker').datepicker({
-                                format: 'dd/mm/yyyy',
-                                autoclose: true
-                            });
-                        });
-                    </script>
 
 
 
+         <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
+
+                <div class="form-group">
+                    <label for="">Marca</label>
+
+                    <select class="form-control" id="marca" name="marca" value="<%=camion.getMarca() != null? camion.getMarca(): ""%></select>">
+                        <% for (Marcas marca : marcasEnum) { %>
+                              <option ><%= marca.name() %></option>
+                        <% } %>
+                    </select>
+                    <%
+                        if(errores != null && errores.containsKey("marca")){
+                            out.println("<span class='text-danger'>"+ errores.get("marca") +"</span>");
+                        }
+                    %>
+                </div>
+                    <div class="form-group">
+                        <label for="">Capacidad</label>
+                        <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
+                        <input type="text" name="capacidad" id="capacidad" class="form-control" value="<%=camion.getCapacidad() != null? camion.getCapacidad(): ""%>">
+                        <%
+                            if(errores != null && errores.containsKey("capacidad")){
+                                out.println("<span class='text-danger'>"+ errores.get("capacidad") +"</span>");
+                            }
+                        %>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Kilometraje</label>
+                        <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
+                        <input type="text" name="kilometraje" id="kilometraje" class="form-control" value="<%=camion.getKilometraje() != null? camion.getKilometraje(): ""%>">
+                        <%
+                            if(errores != null && errores.containsKey("kilometraje")){
+                                out.println("<span class='text-danger'>"+ errores.get("kilometraje") +"</span>");
+                            }
+                        %>
+                    </div>
 
                     <div class="form-group">
                         <label for="">Disponibilidad</label>
                         <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
                         <!-- input:checkbox[name=disponibilidad][id=disponibilidad].form-check-input[value=Cadena][checked] -->
-                        <input type="checkbox" name="disponibilidad" id="disponibilidad" class="form-check-input" value="${param.disponibilidad}" checked>
+                        <input type="checkbox" name="disponibilidad" id="disponibilidad" class="form-check-input" value="1" <%=disponible%> >
                     </div>
 
 

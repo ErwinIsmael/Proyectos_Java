@@ -1,6 +1,7 @@
 package com.jimenez.app.rutas.controllers;
 
 import com.jimenez.app.rutas.models.Camion;
+import com.jimenez.app.rutas.models.enums.Marcas;
 import com.jimenez.app.rutas.services.CamionesService;
 import com.jimenez.app.rutas.services.IService;
 import jakarta.servlet.ServletException;
@@ -11,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/camiones/listar")
@@ -29,8 +31,8 @@ public class ListaCamionesServlet extends HttpServlet {
             resp.getWriter().println("<h1>" + c.getId() + " -> "
                     + c.getMarca() + " -> " + c.getMatricula() + "</h1>");
         }
-*/
 
+*/
         req.setAttribute("camiones", camiones);
         getServletContext().getRequestDispatcher("/listaCamiones.jsp").forward(req, resp);
 

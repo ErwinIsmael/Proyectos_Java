@@ -186,22 +186,13 @@
 
                     <div class="form-group">
                         <label for="modelo">Fecha Nacimiento</label>
-                        <input type="text" name="fechaNacimiento" id="fechaNacimiento" class="form-control datepicker" value="${param.fechaNacimiento}">
+                        <input type="date" name="fechaNacimiento" id="fechaNacimiento" class="form-control" value="${param.fechaNacimiento}">
                         <%
                             if (errores != null && errores.containsKey("fechaNacimiento")) {
                                 out.println("<span class='text-danger'>" + errores.get("fechaNacimiento") + "</span>");
                             }
                         %>
                     </div>
-
-                    <script>
-                        $(document).ready(function(){
-                            $('.datepicker').datepicker({
-                                format: 'dd/mm/yyyy',
-                                autoclose: true
-                            });
-                        });
-                    </script>
 
 
 

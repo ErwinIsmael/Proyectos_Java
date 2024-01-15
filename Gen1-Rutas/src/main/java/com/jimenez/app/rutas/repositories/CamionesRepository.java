@@ -1,6 +1,7 @@
 package com.jimenez.app.rutas.repositories;
 
 import com.jimenez.app.rutas.models.Camion;
+import com.jimenez.app.rutas.services.CamionesService;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,6 +15,8 @@ public class CamionesRepository implements IRepository<Camion>{
     public CamionesRepository(Connection conn) {
         this.conn = conn;
     }
+
+
 
     @Override
     public List<Camion> listar() throws SQLException {

@@ -16,13 +16,42 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
-@WebServlet("/choferes/alta")
-public class AltaChoferServlet extends HttpServlet {
+@WebServlet("/choferes/editar")
+public class EdicionChoferServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/altaChofer2.jsp")
-                .forward(req, resp);
+        Connection conn = (Connection) req.getAttribute("conn");
+        IService<Chofer> service = new ChoferesService(conn);
+        long id;
+        try{
+            id= Long.parseLong(req.getParameter("id"));
+        }catch (NumberFormatException e){
+            id = 0L;
+        }
+        Chofer chofer = new Chofer();
+        if (id > 0){
+            Optional<Chofer> o = service.getById(id);
+            if (o.isPresent()){
+                chofer = o.get();
+                req.setAttribute("chofer", chofer);
+                getServletContext().getRequestDispatcher("/edicionChofer.jsp")
+                        .forward(req,resp);
+            }
+            else {
+                resp.sendError(HttpServletResponse.SC_NOT_FOUND,
+                        "No existe el chofer en la base de dtaos");
+            }
+        }
+        else {
+            //resp.sendRedirect(req.getContextPath() + "/choferes/lista");
+            resp.sendError(HttpServletResponse.SC_NOT_FOUND,
+                    "Error el id es null, se debe enviar como parametro en la url!");
+
+        }
+
     }
 
     @Override
@@ -40,7 +69,7 @@ public class AltaChoferServlet extends HttpServlet {
         LocalDate fecha;
         try {
             fecha = LocalDate.parse(fechaNacimiento,
-                    DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+                    DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         }catch (DateTimeException e){
             fecha = null;
         }
@@ -71,22 +100,27 @@ public class AltaChoferServlet extends HttpServlet {
         if(fechaNacimiento == null || fechaNacimiento.isBlank()){
             errores.put("fechaNacimiento","la fecha de Nacimiento es requerida!");
         }
+
+        long id;
+        id = Long.parseLong(req.getParameter("id"));
+        Chofer chofer = new Chofer();
+        chofer.setId(id);
+        chofer.setNombre(nombre);
+        chofer.setApPaterno(apPaterno);
+        chofer.setApMaterno(apMaterno);
+        chofer.setLicencia(licencia);
+        chofer.setTelefono(telefono);
+        chofer.setFechaNacimiento(fecha);
+        chofer.setDisponibilidad(habilitar);
+
         if (errores.isEmpty()){
-            Chofer chofer = new Chofer();
-            chofer.setId(0L);
-            chofer.setNombre(nombre);
-            chofer.setApPaterno(apPaterno);
-            chofer.setApMaterno(apMaterno);
-            chofer.setLicencia(licencia);
-            chofer.setTelefono(telefono);
-            chofer.setFechaNacimiento(fecha);
-            chofer.setDisponibilidad(habilitar);
+
             service.guardar(chofer);
             resp.sendRedirect(req.getContextPath()+"/choferes/listar");
         }
         else {
             req.setAttribute("errores", errores);
-            getServletContext().getRequestDispatcher("/altaChofer2.jsp")
+            getServletContext().getRequestDispatcher("/edicionChofer.jsp")
                     .forward(req, resp);
 
         }
