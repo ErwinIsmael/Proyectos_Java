@@ -99,7 +99,7 @@ public class EdicionCamionServlet extends HttpServlet {
         if (kilometraje == null || kilometraje.isBlank()){
             errores.put("kilometraje","El kilometraje es requerido");
         }
-        Long id;
+        long id;
         id=Long.parseLong(req.getParameter("id"));
         Camion camion = new Camion();
         camion.setId(id);
@@ -113,7 +113,6 @@ public class EdicionCamionServlet extends HttpServlet {
 
 
         if (errores.isEmpty()){
-
             service.guardar(camion);
             resp.sendRedirect(req.getContextPath()+"/camiones/listar");
         }

@@ -1,14 +1,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@page import="java.util.*" %>
 <%@page import="com.jimenez.app.rutas.models.enums.*" %>
-
+<%@page import="com.jimenez.app.rutas.models.*" %>
 
 
 <%
-  Map<String, String> errores = (Map<String, String>) request.getAttribute("errores");
+  Map<String, String> errores = (Map<String,String>) request.getAttribute("errores");
   Camion camion = (Camion) request.getAttribute("camion");
   Boolean estado = camion.getDisponibilidad();
-  String disponible = estado == true ? "checked";
+  String disponible = estado == true ? "checked" : "";
 %>
 
  <%Marcas[] marcasEnum = Marcas.values();%>
@@ -28,8 +28,6 @@
             crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
-
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
@@ -119,13 +117,13 @@
             <%}%>
 
         <div class="row">
-            <form action="<%=request.getContextPath()%>/camiones/alta" method="post">
+            <form action="<%=request.getContextPath()%>/camiones/editar" method="post">
                 <input type="hidden" name="id" value="<%=camion.getId()%>">
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="">Matricula</label>
                         <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-                        <input type="text" name="matricula" id="matricula" class="form-control" value="<%=camion.getMatricula() != null? camion.getMatricula(): ""%>">
+                        <input type="text" name="matricula" id="matricula" class="form-control" value="<%=camion.getMatricula() !=null ? camion.getMatricula(): ""%>">
                         <%
                             if(errores != null && errores.containsKey("matricula")){
                                 out.println("<span class='text-danger'>"+ errores.get("matricula") +"</span>");
@@ -136,25 +134,36 @@
 
                     <div class="form-group">
                         <label for="">Tipo camion</label>
-                        <select class="form-control" id="tipoCamion" name="tipoCamion" value="<%=camion.getTipoCamion() != null? camion.getTipoCamion(): ""%>">
-                            <% for (Tipos tipo : tiposEnum) { %>
-                                  <option ><%= tipo.name() %></option>
-                            <% } %>
+                        <select class="form-control" id="tipoCamion" name="tipoCamion" value="<%=camion.getTipoCamion() !=null ? camion.getTipoCamion(): ""%>">
+                            <%
+                            String seleccionTipo = camion.getTipoCamion();
+                            for (Tipos tipo : tiposEnum) {
+                                String valorTipo = tipo.name();
+                                String mostrarTipo = valorTipo.equals(seleccionTipo) ? "selected" : "";
+                         %>
+                             <option <%= mostrarTipo %>><%= tipo.name() %></option>
+                         <% } %>
                         </select>
+                        <%
+                             if(errores != null && errores.containsKey("tipoCamion")){
+                                   out.println("<span class='text-danger'>"+errores.get("tipoCamion") + "</span>");
+                             }
+                        %>
                     </div>
 
 
-                    <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-
                     <div class="form-group">
                         <label for="">Modelo</label>
-                        <select class="form-control" id="modelo" name="modelo" value="<%=camion.getModelo() != null? camion.getModelo(): ""%></select>">
-                            <option style="display:none;">--seleccionar--</option>
+                        <select class="form-control" id="modelo" name="modelo" value="<%=camion.getModelo() !=null ? camion.getModelo(): ""%></select>">
+
                             <%
+                            String seleccionModelo = String.valueOf(camion.getModelo());
                             int currentYear = java.time.Year.now().getValue();
                             for (int year = 2003; year <= currentYear + 1; year++) {
+                                String valorModelo = String.valueOf(year);
+                                String mostrarTipoModel = valorModelo.equals(seleccionModelo) ? "selected" : "";
                             %>
-                                <option><%= year %></option>
+                                <option <%= mostrarTipoModel %> > <%= year %> </option>
                             <% } %>
                         </select>
                         <%
@@ -172,9 +181,14 @@
                 <div class="form-group">
                     <label for="">Marca</label>
 
-                    <select class="form-control" id="marca" name="marca" value="<%=camion.getMarca() != null? camion.getMarca(): ""%></select>">
-                        <% for (Marcas marca : marcasEnum) { %>
-                              <option ><%= marca.name() %></option>
+                    <select class="form-control" id="marca" name="marca" value="<%=camion.getMarca() !=null ? camion.getMarca(): ""%></select>">
+                        <%
+                        String seleccionMarca = camion.getMarca();
+                        for (Marcas marca : marcasEnum) {
+                            String valorMarca = marca.name();
+                            String mostrarMarca = valorMarca.equals(seleccionMarca) ? "selected" : "";
+                        %>
+                              <option <%= mostrarMarca %> ><%= marca.name() %></option>
                         <% } %>
                     </select>
                     <%
@@ -186,7 +200,7 @@
                     <div class="form-group">
                         <label for="">Capacidad</label>
                         <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-                        <input type="text" name="capacidad" id="capacidad" class="form-control" value="<%=camion.getCapacidad() != null? camion.getCapacidad(): ""%>">
+                        <input type="text" name="capacidad" id="capacidad" class="form-control" value="<%=camion.getCapacidad() !=null ? camion.getCapacidad(): ""%>">
                         <%
                             if(errores != null && errores.containsKey("capacidad")){
                                 out.println("<span class='text-danger'>"+ errores.get("capacidad") +"</span>");
@@ -197,7 +211,7 @@
                     <div class="form-group">
                         <label for="">Kilometraje</label>
                         <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-                        <input type="text" name="kilometraje" id="kilometraje" class="form-control" value="<%=camion.getKilometraje() != null? camion.getKilometraje(): ""%>">
+                        <input type="text" name="kilometraje" id="kilometraje" class="form-control" value="<%=camion.getKilometraje() !=null ? camion.getKilometraje(): ""%>">
                         <%
                             if(errores != null && errores.containsKey("kilometraje")){
                                 out.println("<span class='text-danger'>"+ errores.get("kilometraje") +"</span>");
