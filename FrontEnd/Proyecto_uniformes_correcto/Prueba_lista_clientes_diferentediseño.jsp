@@ -556,7 +556,7 @@
                                                 <th></th>
                                             </tr>
                                         </thead>
-
+                
                                         <tbody>
                                             <% for(Cliente c: clientes){ %>
                                                 <tr>
@@ -577,7 +577,7 @@
                         </div>
 
                     </div>
-
+                    
 
                 </div>
             </div>

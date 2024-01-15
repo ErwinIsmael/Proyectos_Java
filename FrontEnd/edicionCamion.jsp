@@ -103,7 +103,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2>Formulario Alta Camion</h2>
+                <h2>Formulario Actualizacion Camion</h2>
             </div>
         </div>
 
