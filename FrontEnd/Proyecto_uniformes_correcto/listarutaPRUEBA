@@ -233,7 +233,7 @@
             var numero = $("#Numero").val();//224
             var colonia = $("#Colonia").val();//valle del angel
             var ciudad = $("#Ciudad").val();//Heroica puebla de zaragoza
-            var estado = $("#Estado").val();//Puebla 
+            var estado = $("#Estado").val();//Puebla
             var cp = $("#CP").val();//72040
             //Hacer la peticion a mi API, mandandoles los valores de las cajas
             $.ajax({
@@ -259,7 +259,7 @@
 
         }
 
-        
+
 
 
 
@@ -374,7 +374,7 @@
                     {
                         $('#myModal').modal('hide');
                     }
-                });
+                } );
             }
 
         }

@@ -20,15 +20,15 @@ public class AltaRutaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {
-        Connection conn = (Connection) req.getAttribute("conn");
-        IRutasService service = new RutasService(conn);
-        req.setAttribute("camiones", service.listarCamiones());
-        req.setAttribute("choferes", service.listarChoferes());
+        Connection conn = (Connection) req.getAttribute("conn"); //recupera la conexion
+        IRutasService service = new RutasService(conn);//se crea el servicio
+        req.setAttribute("camiones", service.listarCamiones()); //se asocia el valor de lo que regrese lista
+        req.setAttribute("choferes", service.listarChoferes()); // lo mismo hacer lo que la funcion solicite
 
-        HttpSession session = req.getSession();
+        HttpSession session = req.getSession(); //
         List<Cargamento> cargamentos = (List<Cargamento>) session.getAttribute("cargamentos");
         req.setAttribute("cargamentos", cargamentos);
 
-        getServletContext().getRequestDispatcher("/altaRuta.jsp").forward(req,resp);
+        getServletContext().getRequestDispatcher("/altaRuta.jsp").forward(req,resp); //devolver la vista que vamos a pintar, altaRuta.jsp
     }
 }

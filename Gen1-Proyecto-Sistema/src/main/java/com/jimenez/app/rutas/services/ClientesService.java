@@ -31,16 +31,29 @@ public class ClientesService implements IService<Cliente>{
 
     @Override
     public Optional<Cliente> getById(Long id) {
-        return Optional.empty();
+        try {
+            return Optional.ofNullable(clientesRepo.getById(id));
+        }catch (SQLException e){
+            throw new RuntimeException(e.getMessage(), e.getCause());
+        }
     }
 
     @Override
     public void guardar(Cliente cliente) {
+        try {
+            clientesRepo.guardar(cliente);
+        }catch (SQLException e){
+            throw new RuntimeException(e.getMessage(), e.getCause());
+        }
 
     }
 
     @Override
     public void eliminar(Long id) {
-
+        try {
+            clientesRepo.eliminar(id);
+        }catch (SQLException e){
+            throw new RuntimeException(e.getMessage(), e.getCause());
+        }
     }
 }

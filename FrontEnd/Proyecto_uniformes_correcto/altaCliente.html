@@ -22,10 +22,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
     <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-
-
       <style>
       :root {
           --font-family-sans-serif: "Open Sans", -apple-system, BlinkMacSystemFont,
@@ -541,8 +537,7 @@
                                 <h2>Listado de Clientes</h2>
                             </div>
                             <div class="col-10">
-                                <button class="btn btn-success btn-xs" style="margin-top: 30px;" onclick="getDireccion();">Alta cliente</button>
-                                <!-- <a href="<%=request.getContextPath()%>/clientes/alta" class="btn btn-success">Alta Cliente</a> -->
+                                <a href="<%=request.getContextPath()%>/choferes/alta" class="btn btn-success">Alta Cliente</a>
                             </div>
                         </div>
                         <div class="row">
@@ -556,7 +551,6 @@
                                                 <th>Ap. Paterno</th>
                                                 <th>Ap. Materno</th>
                                                 <th>Telefono</th>
-                                                <th>Correo electronico</th>
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
@@ -571,10 +565,9 @@
                                                     <td><%=c.getApPaterno()%></td>
                                                     <td><%=c.getApMaterno()%></td>
                                                     <td><%=c.getTelefono()%></td>
-                                                    <td><%=c.getEmail()%></td>
-                                                    <td><a href="<%=request.getContextPath()%>/clientes/detalle?id=<%=c.getId()%>" class="btn btn-success">Detalle</a></td>
-                                                    <td><a href="<%=request.getContextPath()%>/clientes/editar?id=<%=c.getId()%>" class="btn btn-primary">Editar</a></td>
-                                                    <td><a href="<%=request.getContextPath()%>/clientes/eliminar?id=<%=c.getId()%>" class="btn btn-danger">Eliminar</a></td>
+                                                    <td><a href="<%=request.getContextPath()%>/choferes/detalle?id=<%=c.getId()%>" class="btn btn-success">Detalle</a></td>
+                                                    <td><a href="<%=request.getContextPath()%>/choferes/editar?id=<%=c.getId()%>" class="btn btn-primary">Editar</a></td>
+                                                    <td><a href="<%=request.getContextPath()%>/choferes/eliminar?id=<%=c.getId()%>" class="btn btn-danger">Eliminar</a></td>
                                                 </tr>
                                                 <% } %>
                                         </tbody>
@@ -591,97 +584,8 @@
         </div>
     </div>
 
-<div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4>Guardar Direccion</h4>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="">Calle</label>
-                                <input type="text" name="Calle" id="Calle" class="form-control">
-
-                            </div>
-
-
-                            <div class="form-group">
-                                <label for="">Numero</label>
-                                <input type="text" name="Numero" id="Numero" class="form-control">
-
-                            </div>
-
-
-                            <div class="form-group">
-                                <label for="">Colonia</label>
-                                <input type="text" name="Colonia" id="Colonia" class="form-control">
-
-                            </div>
-
-                            <div class="form-group">
-                                <label for="">Ciudad</label>
-                                <input type="text" name="Ciudad" id="Ciudad" class="form-control">
-
-                            </div>
-
-                            <div class="form-group">
-                                <label for="">Estado</label>
-                                <input type="text" name="Estado" id="Estado" class="form-control">
-
-                            </div>
-
-                            <div class="form-group">
-                                <label for="">CP</label>
-                                <input type="text" name="CP" id="CP" class="form-control">
-
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <div class="row">
-                        <div class="col-md-10 col-md-offset-1">
-                            <div class="col-md-4">
-                                <button class="btn btn-success" onclick="btnGuardarDir();">Guardar</button>
-                            </div>
-                            <div class="col-md-4 col-md-offset-4">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
 
  <script>
-
-    function getDireccion(){
-        $('#myModal').modal('show');
-        Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Your work has been saved",
-            showConfirmButton: false,
-            timer: 1500
-    });
-    }
-
  const mobileScreen = window.matchMedia("(max-width: 990px )");
  $(document).ready(function () {
      $(".dashboard-nav-dropdown-toggle").click(function () {

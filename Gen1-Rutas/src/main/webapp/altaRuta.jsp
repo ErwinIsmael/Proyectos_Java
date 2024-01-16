@@ -4,8 +4,8 @@
 
 <%
   //recuperamos la lista de choferes que seteamos en el request desde el servlet
-  List<Chofer> choferes =  (List<Chofer>) request.getAttribute("choferes");
-  List<Camion> camiones =  (List<Camion>) request.getAttribute("camiones");
+  List<Chofer> choferes =  (List<Chofer>) request.getAttribute("choferes"); //se recupera la lista de choferes que se mando desde controllers
+  List<Camion> camiones =  (List<Camion>) request.getAttribute("camiones"); //se recupera la lista de choferes que se mando desde controllers
 %>
 
 <!DOCTYPE html>
@@ -142,22 +142,16 @@
                     <input type="text" name="distancia" id="distancia" class="form-control">
                 </div>
 
-
-
-
             </div>
 
             derecha
-
-
 
         </div>
 
     </div>
 
 
-
-    <div class="" id="myModal" role="dialog">
+    <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -233,6 +227,43 @@
 
 
     <script>
+        function btnGuardarDir(){
+            //recuperar los valores de las cajas de texto
+            var calle = $("#Calle").val();//boulevard san felipe
+            var numero = $("#Numero").val();//224
+            var colonia = $("#Colonia").val();//valle del angel
+            var ciudad = $("#Ciudad").val();//Heroica puebla de zaragoza
+            var estado = $("#Estado").val();//Puebla
+            var cp = $("#CP").val();//72040
+            //Hacer la peticion a mi API, mandandoles los valores de las cajas
+            $.ajax({
+                type:'POST',
+                url: "http://localhost:8080/Gen1-API/api/direcciones",
+                data: { "calle":calle, "numero":numero, "colonia":colonia, "ciudad": ciudad, "estado":
+                estado, "cp":cp },
+                //esperar la respuesta del servidpr
+                success: function(resp) {
+                    //mostrar la respuesta
+                    console.log(resp);
+                    //habilitar el boton
+                    $('#MyModal').modal('hide');
+                    if( $("#txtEsOD").val() == 1){ //es origen
+                        $("#idOrigen").val(resp.message);
+                    }
+                    else{ // es destino
+                        $("#idDestino"),val(resp.message);
+                    }
+                    swal("Exito","Direccion guardada correctamente","success");
+                }
+            });
+
+        }
+
+
+
+
+
+
         function LimpiarDatos(){
             $("#Calle").val("");
             $("#Numero").val("");
