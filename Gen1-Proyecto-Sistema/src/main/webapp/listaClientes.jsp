@@ -22,114 +22,42 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
     <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.3/dist/sweetalert2.min.css" integrity="sha256-h2Gkn+H33lnKlQTNntQyLXMWq7/9XI2rlPCsLsVcUBs=" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.3/dist/sweetalert2.all.min.js" integrity="sha256-xkymBp70qMSHnInLEXDWb34pyON8sBGMA1S84vQILx4=" crossorigin="anonymous"></script>
 
 
 
       <style>
-      :root {
-          --font-family-sans-serif: "Open Sans", -apple-system, BlinkMacSystemFont,
-          "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-          "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      }
 
-      *, *::before, *::after {
-          -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-      }
+          .swal2-title {
+                        font-size: 30px !important;
+                    }
+                .swal2-html-container{
+                  font-size: 20px !important;
+                }
 
-      html {
-          font-family: sans-serif;
-          line-height: 1.15;
-          -webkit-text-size-adjust: 100%;
-          -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      }
+                .swal2-confirm {
+                  font-size: 13px !important;
+                }
+                .swal2-cancel{
+                    font-size: 13px !important;
+                }
 
-      nav {
-          display: block;
-      }
+
+        .swal2-icon{
+            height: 70px !important;
+            width: 70px !important;
+        }
+
+
 
       body {
           margin: 0;
-          font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-          "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-          font-weight: 400;
-          line-height: 1.5;
-          color: #515151;
-          text-align: left;
-          background-color: #fff;
+            font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
       }
 
-      h1, h2, h3, h4, h5, h6 {
-          margin-top: 0;
-          margin-bottom: 0.5rem;
-      }
-
-      p {
-          margin-top: 0;
-          margin-bottom: 1rem;
-      }
-
-      a {
-          color: #3f84fc;
-          text-decoration: none;
-          background-color: transparent;
-      }
-
-      a:hover {
-          color: #0458eb;
-          text-decoration: underline;
-      }
-
-      h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-          font-family: "Nunito", sans-serif;
-          margin-bottom: 0.5rem;
-          font-weight: 500;
-          line-height: 1.2;
-      }
-
-      h1, .h1 {
-          font-size: 2.5rem;
-          font-weight: normal;
-      }
-
-      .card {
-          position: relative;
-          display: -webkit-box;
-          display: -webkit-flex;
-          display: -ms-flexbox;
-          display: flex;
-          -webkit-box-orient: vertical;
-          -webkit-box-direction: normal;
-          -webkit-flex-direction: column;
-          -ms-flex-direction: column;
-          flex-direction: column;
-          min-width: 0;
-          word-wrap: break-word;
-          background-color: #fff;
-          background-clip: border-box;
-          border: 1px solid rgba(0, 0, 0, 0.125);
-          border-radius: 0;
-      }
-
-      .card-body {
-          -webkit-box-flex: 1;
-          -webkit-flex: 1 1 auto;
-          -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
-          padding: 1.25rem;
-          padding: 30px;
-          border-radius: 10px;
-      }
-
-      .card-header {
-          padding: 0.75rem 1.25rem;
-          margin-bottom: 0;
-          background-color: #fff;
-          border-bottom: 1px #fff;
-          text-align: left;
-      }
 
       .dashboard {
           display: -webkit-box;
@@ -574,7 +502,8 @@
                                                     <td><%=c.getEmail()%></td>
                                                     <td><a href="<%=request.getContextPath()%>/clientes/detalle?id=<%=c.getId()%>" class="btn btn-success">Detalle</a></td>
                                                     <td><a href="<%=request.getContextPath()%>/clientes/editar?id=<%=c.getId()%>" class="btn btn-primary">Editar</a></td>
-                                                    <td><a href="<%=request.getContextPath()%>/clientes/eliminar?id=<%=c.getId()%>" class="btn btn-danger">Eliminar</a></td>
+                                                    <!-- <td><a href="<%=request.getContextPath()%>/clientes/eliminar?id=<%=c.getId()%>" class="btn btn-danger">Eliminar</a></td> -->
+                                                    <td><button href="<%=request.getContextPath()%>/clientes/eliminar?id=<%=c.getId()%>" class="btn btn-danger" onclick="eliminarCliente(<%=c.getId()%>)">Eliminar</button></td>
                                                 </tr>
                                                 <% } %>
                                         </tbody>
@@ -670,16 +599,38 @@
 
 
  <script>
+    function eliminarCliente(clienteId){
+        Swal.fire({
+  title: "¿Estas seguro de eliminar el cliente?",
+  text: "No se podra revertir la acción",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Si, Confirmar!"
+}).then((result) => {
+  if (result.isConfirmed) {
+
+    Swal.fire({
+          title: "Eliminado!",
+          text: "El cliente ha sido eliminado!",
+          icon: "success"
+        });
+    setTimeout(() => {
+        window.location.href = "<%= request.getContextPath() %>/clientes/eliminar?id=" + clienteId;
+        }, 1000);
+
+
+
+  }
+});
+
+
+    }
 
     function getDireccion(){
         $('#myModal').modal('show');
-        Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Your work has been saved",
-            showConfirmButton: false,
-            timer: 1500
-    });
+
     }
 
  const mobileScreen = window.matchMedia("(max-width: 990px )");
