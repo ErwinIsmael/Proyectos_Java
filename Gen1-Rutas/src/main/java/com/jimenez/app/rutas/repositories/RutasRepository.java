@@ -11,7 +11,7 @@ public class RutasRepository implements IRutasRepository {
     private Connection conn;
     //constructor
     public RutasRepository(Connection conn) {
-
+        this.conn = conn;
     }
 
     @Override
@@ -51,12 +51,9 @@ public class RutasRepository implements IRutasRepository {
             stmt.setLong(3, ruta.getDireccionOrigenId());
             stmt.setLong(4, ruta.getDireccionDestinoId());
             stmt.setFloat(5, ruta.getDistancia());
-            stmt.setDate(6, Date
-                    .valueOf(ruta.getFechaSalida()));
-            stmt.setDate(7, Date
-                    .valueOf(ruta.getFechaLlegadaEstimada()));
-            stmt.setDate(8, Date
-                    .valueOf(ruta.getFechaLlegadaEstimada()));
+            stmt.setDate(6, Date.valueOf(ruta.getFechaSalida()));
+            stmt.setDate(7, Date.valueOf(ruta.getFechaLlegadaEstimada()));
+            stmt.setDate(8, Date.valueOf(ruta.getFechaLlegadaReal()));
             stmt.setInt(9, ruta.getaTiempo());
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();

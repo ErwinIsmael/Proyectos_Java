@@ -1,9 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@page import="java.util.*" %>
 <%@page import="com.jimenez.app.rutas.models.*" %>
+<%@page import="com.google.gson.Gson" %>
 
 <%
   //recuperamos la lista de choferes que seteamos en el request desde el servlet
+  Camion cam = (Camion) request.getAttribute("camion");
   List<Chofer> choferes =  (List<Chofer>) request.getAttribute("choferes"); //se recupera la lista de choferes que se mando desde controllers
   List<Camion> camiones =  (List<Camion>) request.getAttribute("camiones"); //se recupera la lista de choferes que se mando desde controllers
 %>
@@ -22,6 +24,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
     <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
+
 
 </head>
 <body>
@@ -105,9 +112,8 @@
 
         <br>
         <div class="row">
-            izquierda
-            <div class="col-md-6">
 
+            <div class="col-md-6">
                 <div class="form-group">
                     <label for="">Chofer</label>
                     <select name="chofer" id="chofer" class="form-control">
@@ -134,7 +140,7 @@
 
                 <div class="form-group">
                     <label for="">Fecha Salida</label>
-                    <input type="text" name="FSalida" id="FSalida" class="form-control">
+                    <input type="date" name="FSalida" id="FSalida" class="form-control">
                 </div>
 
                 <div class="form-group">
@@ -144,7 +150,47 @@
 
             </div>
 
-            derecha
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="">Camion</label>
+                    <select name="camion" id="camion" class="form-control"  onchange="actualizarCapacidadCamion()">
+
+                        <option value="">seleccionar</option>
+                        <%for(Camion c: camiones){ %>
+                            <option value="<%=c.getId()%>"><%=c.getMatricula()%></option>
+                        <%}%>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <label for="">Destino</label>
+                            <input type="text" name="destino" id="destino" class="form-control">
+                            <input type="hidden" name="idDestino" id="idDestino" class="form-control">
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-primary btn-xs" style="margin-top: 30px;" onclick="getDireccion(2);">Obtener Datos</button>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Fecha Estimada de Llegada</label>
+                    <input type="date" name="FELlegada" id="FELlegada" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Capacidad Camion</label>
+                    <input type="text" name="capCamion" id="capCamion" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-success" id="btnaltaruta" onclick="GuardarRuta();">Iniciar Ruta</button>
+                </div>
+
+            </div>
 
         </div>
 
@@ -212,7 +258,7 @@
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1">
                             <div class="col-md-4">
-                                <button class="btn btn-success" onclick="btnGuardarDir();">Guardar</button>
+                                <button class="btn btn-success" id="savebtn" onclick="btnGuardarDir();">Guardar</button>
                             </div>
                             <div class="col-md-4 col-md-offset-4">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -227,13 +273,54 @@
 
 
     <script>
-        function btnGuardarDir(){
+
+      var camionesArray = <%= new Gson().toJson(camiones) %>;
+        //Funcion para obtener la capacidad del camion y recuperar el valor en capacidad
+         function actualizarCapacidadCamion() {
+             var camionSeleccionadoId = $("#camion").val();
+
+             var camionSeleccionado = camionesArray.find(function(camion) {
+                 return camion.id == camionSeleccionadoId;
+             });
+             if (camionSeleccionado) {
+                 $("#capCamion").val(camionSeleccionado.capacidad);
+             } else {
+                 $("#capCamion").val("");
+             }
+
+         }
+
+
+
+
+
+         const showLoading = function() {
+            swal({
+                title: 'Un momento, se esta guardando los datos!',
+                closeOnEsc: false,
+                allowOutsideClick: false,
+                onOpen: () => {
+      swal.showLoading();
+    }
+            })
+            $("#savebtn").prop('disabled',true)
+            $("#btnaltaruta").prop('disabled',true)
+            };
+
+
+          function btnGuardarDir(){
+
+            //swal("Enviando datos a la BD", "Un momento por favor", "info")
+            //$("#savebtn").prop('disabled',true)
+            showLoading();
+
+            // show a new success swal here?
             //recuperar los valores de las cajas de texto
             var calle = $("#Calle").val();//boulevard san felipe
             var numero = $("#Numero").val();//224
             var colonia = $("#Colonia").val();//valle del angel
             var ciudad = $("#Ciudad").val();//Heroica puebla de zaragoza
-            var estado = $("#Estado").val();//Puebla 
+            var estado = $("#Estado").val();//Puebla
             var cp = $("#CP").val();//72040
             //Hacer la peticion a mi API, mandandoles los valores de las cajas
             $.ajax({
@@ -243,23 +330,28 @@
                 estado, "cp":cp },
                 //esperar la respuesta del servidpr
                 success: function(resp) {
+                    swal.close();
+
                     //mostrar la respuesta
                     console.log(resp);
                     //habilitar el boton
-                    $('#MyModal').modal('hide');
+                    $('#myModal').modal('hide');
                     if( $("#txtEsOD").val() == 1){ //es origen
                         $("#idOrigen").val(resp.message);
                     }
                     else{ // es destino
-                        $("#idDestino"),val(resp.message);
+                        $("#idDestino").val(resp.message);
                     }
                     swal("Exito","Direccion guardada correctamente","success");
+                    $("#savebtn").prop('disabled',false)
+                    $("#btnaltaruta").prop('disabled',false)
                 }
             });
 
+
         }
 
-        
+
 
 
 
@@ -378,6 +470,42 @@
             }
 
         }
+
+
+
+
+        function GuardarRuta()
+        {
+        showLoading();
+
+            var camoinId =  $("#camion").val();
+            var choferId =  $("#chofer").val();
+            var direccionOrigenId =  $("#idOrigen").val();
+            var direccionDestinoId =  $("#idDestino").val();
+            var distancia =  $("#distancia").val();
+            var fechaSalida =  $("#FSalida").val();
+            var fechaLlegadaEstimada =  $("#FELlegada").val();
+            var capCamion = $("#capCamion").val();
+
+             $.ajax({
+                    type:'POST',
+                    url: "http://localhost:8080/Gen1-Rutas/rutas/alta",
+                    data: {"camoinId":camoinId, "choferId":choferId, "direccionOrigenId":direccionOrigenId, "direccionDestinoId":direccionDestinoId,
+                    "distancia":distancia, "fechaSalida":fechaSalida,"capCamion":capCamion, "fechaLlegadaEstimada":fechaLlegadaEstimada},
+                    success: function(resp){
+                        swal.close();
+                        console.log(resp);
+
+
+                        swal("Exito", "Direccion guardada correctamente", "success")
+                        $("#btnaltaruta").prop('disabled',false)
+                        $("#savebtn").prop('disabled',false)
+                    }
+             })
+
+
+        }
+
 
 
 

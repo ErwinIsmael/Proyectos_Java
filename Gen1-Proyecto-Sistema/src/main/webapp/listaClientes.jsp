@@ -7,7 +7,6 @@
   List<Cliente> clientes =  (List<Cliente>) request.getAttribute("clientes");
 %>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -411,7 +410,7 @@
             </header>
 
             <nav class="dashboard-nav-list">
-                <a href="#" class="dashboard-nav-item">
+                <a href="<%=request.getContextPath()%>/clientes/menu" class="dashboard-nav-item">
                     <i class="fas fa-home"></i>
                     Menu
                 </a>
@@ -429,8 +428,8 @@
                     </a>
                 <div class='dashboard-nav-dropdown-menu'>
                     <a href="#"  class="dashboard-nav-dropdown-item">All</a>
-                    <a href="#" class="dashboard-nav-dropdown-item">Lista de Clientes</a>
-                    <a href="#" class="dashboard-nav-dropdown-item">Alta de Clientes</a>
+                    <a href="<%=request.getContextPath()%>/clientes/listar" class="dashboard-nav-dropdown-item">Lista de Clientes</a>
+                    <a href="<%=request.getContextPath()%>/clientes/alta" class="dashboard-nav-dropdown-item">Alta de Clientes</a>
                 </div>
                 </div>
                 <div class='dashboard-nav-dropdown'>
@@ -464,54 +463,58 @@
             <div class='dashboard-content'>
                 <div class="container">
                     <div class='card-header'>
-                        <div class="row">
-                            <div class="col-10">
-                                <h2>Listado de Clientes</h2>
-                            </div>
-                            <div class="col-10">
-                                <button class="btn btn-success btn-xs" style="margin-top: 30px;" onclick="getDireccion();">Alta cliente</button>
-                                <!-- <a href="<%=request.getContextPath()%>/clientes/alta" class="btn btn-success">Alta Cliente</a> -->
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-striped" id="Cadena" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>Id</th>
-                                                <th>Nombre</th>
-                                                <th>Ap. Paterno</th>
-                                                <th>Ap. Materno</th>
-                                                <th>Telefono</th>
-                                                <th>Correo electronico</th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
 
-                                        <tbody>
-                                            <% for(Cliente c: clientes){ %>
-                                                <tr>
-                                                    <td><%=c.getId()%></td>
-                                                    <td><%=c.getNombre()%></td>
-                                                    <td><%=c.getApPaterno()%></td>
-                                                    <td><%=c.getApMaterno()%></td>
-                                                    <td><%=c.getTelefono()%></td>
-                                                    <td><%=c.getEmail()%></td>
-                                                    <td><a href="<%=request.getContextPath()%>/clientes/detalle?id=<%=c.getId()%>" class="btn btn-success">Detalle</a></td>
-                                                    <td><a href="<%=request.getContextPath()%>/clientes/editar?id=<%=c.getId()%>" class="btn btn-primary">Editar</a></td>
-                                                    <!-- <td><a href="<%=request.getContextPath()%>/clientes/eliminar?id=<%=c.getId()%>" class="btn btn-danger">Eliminar</a></td> -->
-                                                    <td><button href="<%=request.getContextPath()%>/clientes/eliminar?id=<%=c.getId()%>" class="btn btn-danger" onclick="eliminarCliente(<%=c.getId()%>)">Eliminar</button></td>
-                                                </tr>
-                                                <% } %>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
 
+             <!-- **************************   CONTENIDO DE DASHBOARD ************************************  -->
+             <div class="row">
+                <div class="col-10">
+                    <h2>Listado de Clientes</h2>
+                </div>
+                <div class="col-10">
+                    <button class="btn btn-success btn-xs" style="margin-top: 30px;" onclick="getDireccion();">Alta cliente</button>
+                    <!-- <a href="<%=request.getContextPath()%>/clientes/alta" class="btn btn-success">Alta Cliente</a> -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped" id="Cadena" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nombre</th>
+                                    <th>Ap. Paterno</th>
+                                    <th>Ap. Materno</th>
+                                    <th>Telefono</th>
+                                    <th>Correo electronico</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <% for(Cliente c: clientes){ %>
+                                    <tr>
+                                        <td><%=c.getId()%></td>
+                                        <td><%=c.getNombre()%></td>
+                                        <td><%=c.getApPaterno()%></td>
+                                        <td><%=c.getApMaterno()%></td>
+                                        <td><%=c.getTelefono()%></td>
+                                        <td><%=c.getEmail()%></td>
+                                        <td><a href="<%=request.getContextPath()%>/clientes/detalle?id=<%=c.getId()%>" class="btn btn-success">Detalle</a></td>
+                                        <td><a href="<%=request.getContextPath()%>/clientes/editar?id=<%=c.getId()%>" class="btn btn-primary">Editar</a></td>
+                                        <!-- <td><a href="<%=request.getContextPath()%>/clientes/eliminar?id=<%=c.getId()%>" class="btn btn-danger">Eliminar</a></td> -->
+                                        <td><button href="<%=request.getContextPath()%>/clientes/eliminar?id=<%=c.getId()%>" class="btn btn-danger" onclick="eliminarCliente(<%=c.getId()%>)">Eliminar</button></td>
+                                    </tr>
+                                    <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+<!-- ****************************** FIN CONTENIDO DASHBOARD ************************************-->
                     </div>
 
 
@@ -520,7 +523,10 @@
         </div>
     </div>
 
-<div class="modal fade" id="myModal" role="dialog">
+
+
+    <!-- *************************COMIENZA TARJETA FLOTANTE ****************************-->
+    <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -596,7 +602,7 @@
 
 
 
-
+<!--******************INICIO DE SCRIPTS ***********************************-->
 
  <script>
     function eliminarCliente(clienteId){
@@ -628,30 +634,67 @@
 
     }
 
-    function getDireccion(){
-        $('#myModal').modal('show');
 
-    }
+     const mobileScreen = window.matchMedia("(max-width: 990px )");
+     $(document).ready(function () {
+         $(".dashboard-nav-dropdown-toggle").click(function () {
+             $(this).closest(".dashboard-nav-dropdown")
+                 .toggleClass("show")
+                 .find(".dashboard-nav-dropdown")
+                 .removeClass("show");
+             $(this).parent()
+                 .siblings()
+                 .removeClass("show");
+         });
+         $(".menu-toggle").click(function () {
+             if (mobileScreen.matches) {
+                 $(".dashboard-nav").toggleClass("mobile-show");
+             } else {
+                 $(".dashboard").toggleClass("dashboard-compact");
+             }
+         });
+     });
 
- const mobileScreen = window.matchMedia("(max-width: 990px )");
- $(document).ready(function () {
-     $(".dashboard-nav-dropdown-toggle").click(function () {
-         $(this).closest(".dashboard-nav-dropdown")
-             .toggleClass("show")
-             .find(".dashboard-nav-dropdown")
-             .removeClass("show");
-         $(this).parent()
-             .siblings()
-             .removeClass("show");
-     });
-     $(".menu-toggle").click(function () {
-         if (mobileScreen.matches) {
-             $(".dashboard-nav").toggleClass("mobile-show");
-         } else {
-             $(".dashboard").toggleClass("dashboard-compact");
-         }
-     });
- });
+
+
+
+
+
+     function LimpiarDatos(){
+            $("#Calle").val("");
+            $("#Numero").val("");
+            $("#Colonia").val("");
+            $("#Ciudad").val("");
+            $("#Estado").val("");
+            $("#CP").val("");
+        }
+        function getDireccion(){
+            LimpiarDatos();
+            $('#myModal').modal('show');
+            var direccion = "";
+
+
+            swal({
+            title: "¿Estas seguro?",
+            text: "No podemos obtener datos sino proporciona una dirección",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-warning",
+            confirmButtonText: "Si, quiero capturar la información",
+            cancelButtonText: "Cancelar",
+            closeOnConfirm: true,
+            closeOnCancel: true
+        }, function (isConfirm){
+            if (!isConfirm)
+            {
+                $('#myModal').modal('hide');
+            }
+        });
+
+        }
+
+
+
  </script>
 </body>
 </html>

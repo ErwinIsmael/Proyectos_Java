@@ -1,10 +1,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@page import="java.util.*" %>
-
+<%@page import="com.jimenez.app.rutas.models.*" %>
 
 
 <%
-  Map<String, String> errores = (Map<String, String>) request.getAttribute("errores");
+  Cliente cliente = (Cliente) request.getAttribute("cliente");
 %>
 
 
@@ -401,7 +401,7 @@
     <div class='dashboard'>
         <div class="dashboard-nav">
             <header>
-                <a href="#!" class="menu-toggle">
+                <a href="<%=request.getContextPath()%>/clientes/menu" class="dashboard-nav-item">
                     <i class="fas fa-bars"></i>
                 </a>
                 <a href="#" class="brand-logo">
@@ -468,94 +468,30 @@
 
              <!-- **************************   CONTENIDO DE DASHBOARD ************************************  -->
 
+
              <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h2>Formulario Alta Cliente</h2>
-                    </div>
-                </div>
-
-                <br>
-                <% if(errores != null && errores.size()>0){ %>
-                    <ul class="alert alert-danger mx-5 px-5">
-                        <% for(String error: errores.values()){%>
-                        <li><%=error%></li>
-                        <%}%>
-                    </ul>
-                    <%}%>
-
-                <div class="row">
-                    <form action="<%=request.getContextPath()%>/clientes/alta" method="post">
-                        <div class="col-md-12">
-
-
-                            <div class="form-group">
-                                <label for="">Nombre</label>
-                                <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-                                <input type="text" name="nombre" id="nombre" class="form-control" value="${param.nombre}">
-                                <%
-                                    if(errores != null && errores.containsKey("nombre")){
-                                        out.println("<span class='text-danger'>"+ errores.get("nombre") +"</span>");
-                                    }
-                                %>
-                            </div>
-                            <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-
-                            <div class="form-group">
-                                <label for="">Apellido Paterno</label>
-                                <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-                                <input type="text" name="apPaterno" id="apPaterno" class="form-control" value="${param.apPaterno}">
-                                <%
-                                    if(errores != null && errores.containsKey("apPaterno")){
-                                        out.println("<span class='text-danger'>"+ errores.get("apPaterno") +"</span>");
-                                    }
-                                %>
-                            </div>
-
-
-                            <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-                            <div class="form-group">
-                                <label for="">Apellido Materno</label>
-                                <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-                                <input type="text" name="apMaterno" id="apMaterno" class="form-control" value="${param.apMaterno}">
-                                <%
-                                    if(errores != null && errores.containsKey("apMaterno")){
-                                        out.println("<span class='text-danger'>"+ errores.get("apMaterno") +"</span>");
-                                    }
-                                %>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="">Telefono</label>
-                                <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-                                <input type="text" name="telefono" id="telefono" class="form-control" value="${param.telefono}">
-                                <%
-                                    if(errores != null && errores.containsKey("telefono")){
-                                        out.println("<span class='text-danger'>"+ errores.get("telefono") +"</span>");
-                                    }
-                                %>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="">Correo electronico</label>
-                                <input type="text" name="email" id="email" class="form-control" value="${param.email}">
-                                <%
-                                    if(errores != null && errores.containsKey("email")){
-                                        out.println("<span class='text-danger'>"+ errores.get("email") +"</span>");
-                                    }
-                                %>
-                            </div>
-
-
-                            <div class="form-group">
-
-                                <button type="submit" class="btn btn-success">Guardar</button>
-
+                        <div class="card border">
+                            <div class="card-header">
+                                <h3><strong>Detalle del cliente</strong></h3>
                             </div>
                         </div>
-                    </form>
+
+                        <div class="card-body">
+                            <ul class="list-group">
+                                <li class="list-group-item"><strong>Nombre: </strong><%=cliente.getNombre() %></li>
+                                <li class="list-group-item"><strong>Apellido Materno: </strong><%=cliente.getApPaterno()%></li>
+                                <li class="list-group-item"><strong>Apellido Materno: </strong><%=cliente.getApMaterno() %></li>
+                                <li class="list-group-item"><strong>Telefono: </strong><%=cliente.getTelefono() %></li>
+                                <li class="list-group-item"><strong>Correo electronico: </strong><%=cliente.getEmail() %></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+
 <!-- ****************************** FIN CONTENIDO DASHBOARD ************************************-->
                     </div>
 
@@ -571,60 +507,26 @@
 
 
 <!--******************INICIO DE SCRIPTS ***********************************-->
-
- <script>
-    function eliminarCliente(clienteId){
-        Swal.fire({
-  title: "¿Estas seguro de eliminar el cliente?",
-  text: "No se podra revertir la acción",
-  icon: "warning",
-  showCancelButton: true,
-  confirmButtonColor: "#3085d6",
-  cancelButtonColor: "#d33",
-  confirmButtonText: "Si, Confirmar!"
-}).then((result) => {
-  if (result.isConfirmed) {
-
-    Swal.fire({
-          title: "Eliminado!",
-          text: "El cliente ha sido eliminado!",
-          icon: "success"
-        });
-    setTimeout(() => {
-        window.location.href = "<%= request.getContextPath() %>/clientes/eliminar?id=" + clienteId;
-        }, 1000);
-
-
-
-  }
-});
-
-
-    }
-
-
-
-     const mobileScreen = window.matchMedia("(max-width: 990px )");
-     $(document).ready(function () {
-         $(".dashboard-nav-dropdown-toggle").click(function () {
-             $(this).closest(".dashboard-nav-dropdown")
-                 .toggleClass("show")
-                 .find(".dashboard-nav-dropdown")
-                 .removeClass("show");
-             $(this).parent()
-                 .siblings()
-                 .removeClass("show");
-         });
-         $(".menu-toggle").click(function () {
-             if (mobileScreen.matches) {
-                 $(".dashboard-nav").toggleClass("mobile-show");
-             } else {
-                 $(".dashboard").toggleClass("dashboard-compact");
-             }
-         });
+<script>
+ const mobileScreen = window.matchMedia("(max-width: 990px )");
+ $(document).ready(function () {
+     $(".dashboard-nav-dropdown-toggle").click(function () {
+         $(this).closest(".dashboard-nav-dropdown")
+             .toggleClass("show")
+             .find(".dashboard-nav-dropdown")
+             .removeClass("show");
+         $(this).parent()
+             .siblings()
+             .removeClass("show");
      });
-
-
- </script>
+     $(".menu-toggle").click(function () {
+         if (mobileScreen.matches) {
+             $(".dashboard-nav").toggleClass("mobile-show");
+         } else {
+             $(".dashboard").toggleClass("dashboard-compact");
+         }
+     });
+ });
+</script>
 </body>
 </html>

@@ -1,12 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@page import="java.util.*" %>
-
-
+<%@page import="com.jimenez.app.rutas.models.*" %>
 
 <%
-  Map<String, String> errores = (Map<String, String>) request.getAttribute("errores");
+  //recuperamos la lista de choferes que seteamos en el request desde el servlet
+  List<Escuela> escuelas =  (List<Escuela>) request.getAttribute("escuelas");
 %>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -467,95 +466,53 @@
 
 
              <!-- **************************   CONTENIDO DE DASHBOARD ************************************  -->
-
-             <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h2>Formulario Alta Cliente</h2>
-                    </div>
+             <div class="row">
+                <div class="col-10">
+                    <h2>Listado de Clientes</h2>
                 </div>
-
-                <br>
-                <% if(errores != null && errores.size()>0){ %>
-                    <ul class="alert alert-danger mx-5 px-5">
-                        <% for(String error: errores.values()){%>
-                        <li><%=error%></li>
-                        <%}%>
-                    </ul>
-                    <%}%>
-
-                <div class="row">
-                    <form action="<%=request.getContextPath()%>/clientes/alta" method="post">
-                        <div class="col-md-12">
-
-
-                            <div class="form-group">
-                                <label for="">Nombre</label>
-                                <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-                                <input type="text" name="nombre" id="nombre" class="form-control" value="${param.nombre}">
-                                <%
-                                    if(errores != null && errores.containsKey("nombre")){
-                                        out.println("<span class='text-danger'>"+ errores.get("nombre") +"</span>");
-                                    }
-                                %>
-                            </div>
-                            <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-
-                            <div class="form-group">
-                                <label for="">Apellido Paterno</label>
-                                <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-                                <input type="text" name="apPaterno" id="apPaterno" class="form-control" value="${param.apPaterno}">
-                                <%
-                                    if(errores != null && errores.containsKey("apPaterno")){
-                                        out.println("<span class='text-danger'>"+ errores.get("apPaterno") +"</span>");
-                                    }
-                                %>
-                            </div>
-
-
-                            <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-                            <div class="form-group">
-                                <label for="">Apellido Materno</label>
-                                <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-                                <input type="text" name="apMaterno" id="apMaterno" class="form-control" value="${param.apMaterno}">
-                                <%
-                                    if(errores != null && errores.containsKey("apMaterno")){
-                                        out.println("<span class='text-danger'>"+ errores.get("apMaterno") +"</span>");
-                                    }
-                                %>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="">Telefono</label>
-                                <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-                                <input type="text" name="telefono" id="telefono" class="form-control" value="${param.telefono}">
-                                <%
-                                    if(errores != null && errores.containsKey("telefono")){
-                                        out.println("<span class='text-danger'>"+ errores.get("telefono") +"</span>");
-                                    }
-                                %>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="">Correo electronico</label>
-                                <input type="text" name="email" id="email" class="form-control" value="${param.email}">
-                                <%
-                                    if(errores != null && errores.containsKey("email")){
-                                        out.println("<span class='text-danger'>"+ errores.get("email") +"</span>");
-                                    }
-                                %>
-                            </div>
-
-
-                            <div class="form-group">
-
-                                <button type="submit" class="btn btn-success">Guardar</button>
-
-                            </div>
-                        </div>
-                    </form>
+                <div class="col-10">
+                    <button class="btn btn-success btn-xs" style="margin-top: 30px;" onclick="getDireccion();">Alta Escuela</button>
+                    <!-- <a href="<%=request.getContextPath()%>/clientes/alta" class="btn btn-success">Alta Cliente</a> -->
                 </div>
             </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped" id="Cadena" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nombre de Escuela</th>
+                                    <th>Escudo</th>
+                                    <th>Direccion</th>
+                                    <th>CCT</th>
+                                    <th>Nivel escolar</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <% for(Escuela e: escuelas){ %>
+                                    <tr>
+                                        <td><%=e.getId()%></td>
+                                        <td><%=e.getNombre()%></td>
+                                        <td><%=e.getEscudo()%></td>
+                                        <td><%=e.getDireccion()%></td>
+                                        <td><%=e.getCCT()%></td>
+                                        <td><%=e.getNivel()%></td>
+                                        <td><a href="<%=request.getContextPath()%>/escuelas/detalle?id=<%=e.getId()%>" class="btn btn-success">Detalle</a></td>
+                                        <td><a href="<%=request.getContextPath()%>/escuelas/editar?id=<%=e.getId()%>" class="btn btn-primary">Editar</a></td>
+                                        <td><button href="<%=request.getContextPath()%>/escuelas/eliminar?id=<%=e.getId()%>" class="btn btn-danger" onclick="eliminarEscuela(<%=e.getId()%>)">Eliminar</button></td>
+                                    </tr>
+                                    <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
 <!-- ****************************** FIN CONTENIDO DASHBOARD ************************************-->
                     </div>
 
@@ -568,14 +525,81 @@
 
 
     <!-- *************************COMIENZA TARJETA FLOTANTE ****************************-->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Guardar Escuela</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="">Nombre</label>
+                                <input type="text" name="nombre" id="nombre" class="form-control">
+
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="">Escudo</label>
+                                <input type="text" name="escudo" id="escudo" class="form-control">
+
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="">Direccion</label>
+                                <input type="text" name="direccion" id="direccion" class="form-control">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">CCT</label>
+                                <input type="text" name="cct" id="cct" class="form-control">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Nivel Academico</label>
+                                <input type="text" name="nivel" id="nivel" class="form-control">
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            <div class="col-md-4">
+                                <button class="btn btn-success" onclick="btnGuardarDir();">Guardar</button>
+                            </div>
+                            <div class="col-md-4 col-md-offset-4">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 <!--******************INICIO DE SCRIPTS ***********************************-->
 
  <script>
-    function eliminarCliente(clienteId){
+    function eliminarEscuela(escuelaId){
         Swal.fire({
-  title: "¿Estas seguro de eliminar el cliente?",
+  title: "¿Estas seguro de eliminar la escuela?",
   text: "No se podra revertir la acción",
   icon: "warning",
   showCancelButton: true,
@@ -587,11 +611,11 @@
 
     Swal.fire({
           title: "Eliminado!",
-          text: "El cliente ha sido eliminado!",
+          text: "La escuela ha sido eliminado!",
           icon: "success"
         });
     setTimeout(() => {
-        window.location.href = "<%= request.getContextPath() %>/clientes/eliminar?id=" + clienteId;
+        window.location.href = "<%= request.getContextPath() %>/escuelas/eliminar?id=" + escuelaId;
         }, 1000);
 
 
@@ -601,7 +625,6 @@
 
 
     }
-
 
 
      const mobileScreen = window.matchMedia("(max-width: 990px )");
@@ -623,6 +646,45 @@
              }
          });
      });
+
+
+
+
+
+
+     function LimpiarDatos(){
+            $("#Calle").val("");
+            $("#Numero").val("");
+            $("#Colonia").val("");
+            $("#Ciudad").val("");
+            $("#Estado").val("");
+            $("#CP").val("");
+        }
+        function getDireccion(){
+            LimpiarDatos();
+            $('#myModal').modal('show');
+            var direccion = "";
+
+
+            swal({
+            title: "¿Estas seguro?",
+            text: "No podemos obtener datos sino proporciona una dirección",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-warning",
+            confirmButtonText: "Si, quiero capturar la información",
+            cancelButtonText: "Cancelar",
+            closeOnConfirm: true,
+            closeOnCancel: true
+        }, function (isConfirm){
+            if (!isConfirm)
+            {
+                $('#myModal').modal('hide');
+            }
+        });
+
+        }
+
 
 
  </script>
