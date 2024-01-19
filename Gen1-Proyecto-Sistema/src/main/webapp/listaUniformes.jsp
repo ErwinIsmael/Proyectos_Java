@@ -414,7 +414,7 @@
                     <i class="fas fa-home"></i>
                     Menu
                 </a>
-                <a href="<%=request.getContextPath()%>/pedidos/lista" class="dashboard-nav-item active">
+                <a href="<%=request.getContextPath()%>/pedidos/alta" class="dashboard-nav-item active">
                     <i class="fas fa-tachometer-alt"></i>
                     Pedidos
                 </a>

@@ -414,7 +414,7 @@
                     <i class="fas fa-home"></i>
                     Menu
                 </a>
-                <a href="<%=request.getContextPath()%>/pedidos/lista" class="dashboard-nav-item active">
+                <a href="<%=request.getContextPath()%>/pedidos/alta" class="dashboard-nav-item active">
                     <i class="fas fa-tachometer-alt"></i>
                     Pedidos
                 </a>
@@ -454,8 +454,6 @@
                         <i class="fas fa-money-check-alt"></i> Pedidos
                     </a>
                 <div class='dashboard-nav-dropdown-menu'>
-                    <a href="<%=request.getContextPath()%>/pedidos/lista" class="dashboard-nav-dropdown-item">Ver pedidos</a>
-                    <a href="<%=request.getContextPath()%>/talleres/lista" class="dashboard-nav-dropdown-item">Pedidos por taller</a>
                     <a href="<%=request.getContextPath()%>/pedidos/alta" class="dashboard-nav-dropdown-item">Levantar nuevo Pedido</a>
                 </div>
                 </div>

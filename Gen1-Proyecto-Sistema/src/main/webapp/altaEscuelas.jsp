@@ -23,10 +23,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
     <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.3/dist/sweetalert2.min.css" integrity="sha256-h2Gkn+H33lnKlQTNntQyLXMWq7/9XI2rlPCsLsVcUBs=" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.3/dist/sweetalert2.all.min.js" integrity="sha256-xkymBp70qMSHnInLEXDWb34pyON8sBGMA1S84vQILx4=" crossorigin="anonymous"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWeeateTaYGqsHhNcmoDfT7Us-vLDZVPs&amp;sensor=false&amp;language=en"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWeeateTaYGqsHhNcmoDfT7Us-vLDZVPs&amp;sensor=false&amp;language=en"></script>
 
 
 
@@ -456,7 +454,7 @@
                     <i class="fas fa-home"></i>
                     Menu
                 </a>
-                <a href="<%=request.getContextPath()%>/pedidos/lista" class="dashboard-nav-item active">
+                <a href="<%=request.getContextPath()%>/pedidos/alta" class="dashboard-nav-item active">
                     <i class="fas fa-tachometer-alt"></i>
                     Pedidos
                 </a>
@@ -496,8 +494,6 @@
                         <i class="fas fa-money-check-alt"></i> Pedidos
                     </a>
                 <div class='dashboard-nav-dropdown-menu'>
-                    <a href="<%=request.getContextPath()%>/pedidos/lista" class="dashboard-nav-dropdown-item">Ver pedidos</a>
-                    <a href="<%=request.getContextPath()%>/talleres/lista" class="dashboard-nav-dropdown-item">Pedidos por taller</a>
                     <a href="<%=request.getContextPath()%>/pedidos/alta" class="dashboard-nav-dropdown-item">Levantar nuevo Pedido</a>
                 </div>
                 </div>
@@ -559,17 +555,20 @@
                                 %>
                             </div>
 
-                            <div class="form-group">
-                                <label for="">Direccion</label>
-                                <input type="text" name="direccion" id="direccion" class="form-control" value="${param.direccion}">
-                                <button class="btn btn-primary" type="button" id="btnIdDireccion" onclick="btnDireccion();">Buscar Direccion</button>
+                            <div class="form-group" style="display: flex; flex-direction: column; align-items: flex-start;">
+                                <label for="direccion">Direccion</label>
+                                <div style="display: flex; ">
+                                    <input type="text" name="direccion" id="direccion" class="form-control" style="width: 100%;" value="${param.direccion}">
+                                    <button class="btn btn-primary" type="button" id="btnIdDireccion" onclick="btnDireccion();">Buscar Direccion</button>
+                                </div>
 
-                                <%
-                                    if(errores != null && errores.containsKey("direccion")){
-                                        out.println("<span class='text-danger'>"+ errores.get("direccion") +"</span>");
-                                    }
+                                <% if(errores != null && errores.containsKey("direccion")) {
+                                    out.println("<span class='text-danger'>"+ errores.get("direccion") +"</span>");
+                                }
                                 %>
                             </div>
+
+
 
                             <div class="form-group">
                                 <label for="">Centro de Trabajo</label>
@@ -650,10 +649,26 @@
 
 
     function btnDireccion(){
+                swal("Obteniendo Direccion","Espere un momento","info")
+                var address = $("#direccion").val();
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({ 'address': address }, function (results, status) {
+                    if (status === google.maps.GeocoderStatus.OK) {
+
+                        $("#direccion").val(results[0].formatted_address);
+
+                        swal("Se obtuvo la direccion"," ","success")
+                        var completaAddress = results[0].formatted_address;
+                        console.log("Se obtuvo la direccion completa:", completaAddress);
+
+                    } else {
+                        console.error("No se pudo obtener la direccion completa:", status);
+                    }
+                });
 
 
+            }
 
-    }
 
 
      const mobileScreen = window.matchMedia("(max-width: 990px )");

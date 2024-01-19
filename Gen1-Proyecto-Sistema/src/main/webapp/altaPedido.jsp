@@ -1,11 +1,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@page import="java.util.*" %>
+<%@page import="com.jimenez.app.rutas.models.*" %>
 
 
 
 <%
   Map<String, String> errores = (Map<String, String>) request.getAttribute("errores");
+  List<Escuela> escuelas =  (List<Escuela>) request.getAttribute("escuelas");
 %>
+
 
 
 <!DOCTYPE html>
@@ -394,10 +397,49 @@
               left: 0;
           }
       }
+
+
+
+
+
+
+
+
+
+
+      .loader {
+        width: 50px;
+        aspect-ratio: 1;
+        display: grid;
+        border: 4px solid #0000;
+        border-radius: 50%;
+        border-right-color: #25b09b;
+        animation: l15 1s infinite linear;
+      }
+      .loader::before,
+      .loader::after {
+        content: "";
+        grid-area: 1/1;
+        margin: 2px;
+        border: inherit;
+        border-radius: 50%;
+        animation: l15 2s infinite;
+      }
+      .loader::after {
+        margin: 8px;
+        animation-duration: 3s;
+      }
+      @keyframes l15{
+        100%{transform: rotate(1turn)}
+      }
+
+
+
+
       </style>
 </head>
 <body>
-<div class="loader"></div>
+    <div class="loader"></div>
     <div class='dashboard'>
         <div class="dashboard-nav">
             <header>
@@ -455,7 +497,7 @@
                         <i class="fas fa-money-check-alt"></i> Pedidos
                     </a>
                 <div class='dashboard-nav-dropdown-menu'>
-                     <a href="<%=request.getContextPath()%>/pedidos/alta" class="dashboard-nav-dropdown-item">Levantar nuevo Pedido</a>
+                    <a href="<%=request.getContextPath()%>/pedidos/alta" class="dashboard-nav-dropdown-item">Levantar nuevo Pedido</a>
                 </div>
                 </div>
                 <a href="#" class="dashboard-nav-item"><i class="fas fa-cogs"></i> Settings </a><a
@@ -474,94 +516,131 @@
 
              <!-- **************************   CONTENIDO DE DASHBOARD ************************************  -->
 
-             <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h2>Formulario Alta Cliente</h2>
-                    </div>
-                </div>
-
-                <br>
-                <% if(errores != null && errores.size()>0){ %>
-                    <ul class="alert alert-danger mx-5 px-5">
-                        <% for(String error: errores.values()){%>
-                        <li><%=error%></li>
-                        <%}%>
-                    </ul>
-                    <%}%>
-
-                <div class="row">
-                    <form action="<%=request.getContextPath()%>/clientes/alta" method="post">
-                        <div class="col-md-12">
-
-
-                            <div class="form-group">
-                                <label for="">Nombre</label>
-                                <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-                                <input type="text" name="nombre" id="nombre" class="form-control" value="${param.nombre}">
-                                <%
-                                    if(errores != null && errores.containsKey("nombre")){
-                                        out.println("<span class='text-danger'>"+ errores.get("nombre") +"</span>");
-                                    }
-                                %>
-                            </div>
-                            <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-
-                            <div class="form-group">
-                                <label for="">Apellido Paterno</label>
-                                <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-                                <input type="text" name="apPaterno" id="apPaterno" class="form-control" value="${param.apPaterno}">
-                                <%
-                                    if(errores != null && errores.containsKey("apPaterno")){
-                                        out.println("<span class='text-danger'>"+ errores.get("apPaterno") +"</span>");
-                                    }
-                                %>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h2>Formulario Alta Pedido</h2>
+                                </div>
                             </div>
 
+                            <br>
 
-                            <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-                            <div class="form-group">
-                                <label for="">Apellido Materno</label>
-                                <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-                                <input type="text" name="apMaterno" id="apMaterno" class="form-control" value="${param.apMaterno}">
-                                <%
-                                    if(errores != null && errores.containsKey("apMaterno")){
-                                        out.println("<span class='text-danger'>"+ errores.get("apMaterno") +"</span>");
-                                    }
-                                %>
-                            </div>
+                            <% if (errores != null && !errores.isEmpty()) { %>
+                            <ul class="alert alert-danger mx-5 px-5">
+                                <% for (String error : errores.values()) { %>
+                                <li><%= error %></li>
+                                <% } %>
+                            </ul>
+                            <% } %>
 
-                            <div class="form-group">
-                                <label for="">Telefono</label>
-                                <!-- input:text[name=Cadena][id=Cadena].form-control[value=Cadena] -->
-                                <input type="text" name="telefono" id="telefono" class="form-control" value="${param.telefono}">
-                                <%
-                                    if(errores != null && errores.containsKey("telefono")){
-                                        out.println("<span class='text-danger'>"+ errores.get("telefono") +"</span>");
-                                    }
-                                %>
-                            </div>
+                            <div class="row">
+                                <form action="<%=request.getContextPath()%>/pedidos/alta" method="post">
+                                    <div class="col-md-12">
 
-                            <div class="form-group">
-                                <label for="">Correo electronico</label>
-                                <input type="text" name="email" id="email" class="form-control" value="${param.email}">
-                                <%
-                                    if(errores != null && errores.containsKey("email")){
-                                        out.println("<span class='text-danger'>"+ errores.get("email") +"</span>");
-                                    }
-                                %>
-                            </div>
+                                        <div class="form-group">
+                                            <label for="uniformeId">Uniforme</label>
+                                            <select name="uniformeId" id="uniformeId" class="form-control">
+                                                <option value="">Seleccionar</option>
 
+                                            </select>
+                                        </div>
 
-                            <div class="form-group">
+                                        <div class="form-group">
+                                            <label for="clienteId">Cliente</label>
+                                            <select name="clienteId" id="clienteId" class="form-control">
+                                                <option value="">Seleccionar</option>
 
-                                <button type="submit" class="btn btn-success">Guardar</button>
+                                            </select>
+                                        </div>
 
+                                        <!-- Agrega los demás campos del formulario según tus necesidades -->
+
+                                        <div class="form-group">
+                                            <label for="cantidad">Cantidad</label>
+                                            <input type="text" name="cantidad" id="cantidad" class="form-control" value="${param.cantidad}">
+                                            <%
+                                                if (errores != null && errores.containsKey("cantidad")) {
+                                                    out.println("<span class='text-danger'>" + errores.get("cantidad") + "</span>");
+                                                }
+                                            %>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="fechaSolicitud">Fecha de Solicitud</label>
+                                            <input type="date" name="fechaSolicitud" id="fechaSolicitud" class="form-control" value="${param.fechaSolicitud}">
+                                            <%
+                                                if (errores != null && errores.containsKey("fechaSolicitud")) {
+                                                    out.println("<span class='text-danger'>" + errores.get("fechaSolicitud") + "</span>");
+                                                }
+                                            %>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="fechaEntrega">Fecha de Entrega</label>
+                                            <input type="date" name="fechaEntrega" id="fechaEntrega" class="form-control" value="${param.fechaEntrega}">
+                                            <%
+                                                if (errores != null && errores.containsKey("fechaEntrega")) {
+                                                    out.println("<span class='text-danger'>" + errores.get("fechaEntrega") + "</span>");
+                                                }
+                                            %>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="anticipo">Anticipo</label>
+                                            <input type="text" name="anticipo" id="anticipo" class="form-control" value="${param.anticipo}">
+                                            <%
+                                                if (errores != null && errores.containsKey("anticipo")) {
+                                                    out.println("<span class='text-danger'>" + errores.get("anticipo") + "</span>");
+                                                }
+                                            %>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="estatus">Estatus</label>
+                                            <select name="estatus" id="estatus" class="form-control">
+                                                <option value="true" ${param.estatus == 'true' ? 'selected' : ''}>Activo</option>
+                                                <option value="false" ${param.estatus == 'false' ? 'selected' : ''}>Inactivo</option>
+                                            </select>
+                                            <%
+                                                if (errores != null && errores.containsKey("estatus")) {
+                                                    out.println("<span class='text-danger'>" + errores.get("estatus") + "</span>");
+                                                }
+                                            %>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="descripcion">Descripción</label>
+                                            <textarea name="descripcion" id="descripcion" class="form-control">${param.descripcion}</textarea>
+                                            <%
+                                                if (errores != null && errores.containsKey("descripcion")) {
+                                                    out.println("<span class='text-danger'>" + errores.get("descripcion") + "</span>");
+                                                }
+                                            %>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="talla">Talla</label>
+                                            <input type="text" name="talla" id="talla" class="form-control" value="${param.talla}">
+                                            <%
+                                                if (errores != null && errores.containsKey("talla")) {
+                                                    out.println("<span class='text-danger'>" + errores.get("talla") + "</span>");
+                                                }
+                                            %>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-success">Guardar</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                    </form>
-                </div>
-            </div>
+
+
+
+
+
+
 <!-- ****************************** FIN CONTENIDO DASHBOARD ************************************-->
                     </div>
 

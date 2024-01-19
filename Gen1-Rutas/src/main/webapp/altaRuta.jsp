@@ -99,6 +99,7 @@
 
 
     <div class="container body-content">
+
         <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCWeeateTaYGqsHhNcmoDfT7Us-vLDZVPs&amp;sensor=false&amp;language=en"></script>
 
         <div class="row">
@@ -280,6 +281,7 @@
              var camionSeleccionadoId = $("#camion").val();
 
              var camionSeleccionado = camionesArray.find(function(camion) {
+                 console.log(camionesArray);
                  return camion.id == camionSeleccionadoId;
              });
              if (camionSeleccionado) {

@@ -40,7 +40,7 @@ public class ChoferesRepository implements IRepository<Chofer> {
                 if (rs.next()){
                     chofer = this.getChofer(rs);
                 }
-            }
+                }
         }
         return chofer;
     }
