@@ -4,7 +4,7 @@
 
 <%
   //recuperamos la lista de choferes que seteamos en el request desde el servlet
-  List<Cliente> clientes =  (List<Cliente>) request.getAttribute("clientes");
+  List<Uniforme> uniformes =  (List<Uniforme>) request.getAttribute("uniformes");
 %>
 
 <!DOCTYPE html>
@@ -473,13 +473,14 @@
                     <div class='card-header'>
 
 
+
              <!-- **************************   CONTENIDO DE DASHBOARD ************************************  -->
              <div class="row">
                 <div class="col-10">
-                    <h2>Listado de Clientes</h2>
+                    <h2>Listado de Uniformes</h2>
                 </div>
                 <div class="col-10">
-                    <button class="btn btn-success btn-xs" style="margin-top: 30px;" onclick="getDireccion();">Alta cliente</button>
+                    <button class="btn btn-success btn-xs" style="margin-top: 30px;" onclick="getDireccion();">Alta Escuela</button>
                     <!-- <a href="<%=request.getContextPath()%>/clientes/alta" class="btn btn-success">Alta Cliente</a> -->
                 </div>
             </div>
@@ -490,11 +491,12 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Nombre</th>
-                                    <th>Ap. Paterno</th>
-                                    <th>Ap. Materno</th>
-                                    <th>Telefono</th>
-                                    <th>Correo electronico</th>
+                                    <th>id Escuela</th>
+                                    <th>Tipo de Uniforme</th>
+                                    <th>Descripcion</th>
+                                    <th>Tipo de tela</th>
+                                    <th>Color</th>
+                                    <th>Precio</th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
@@ -502,18 +504,18 @@
                             </thead>
 
                             <tbody>
-                                <% for(Cliente c: clientes){ %>
+                                <% for(Uniforme e: uniformes){ %>
                                     <tr>
-                                        <td><%=c.getId()%></td>
-                                        <td><%=c.getNombre()%></td>
-                                        <td><%=c.getApPaterno()%></td>
-                                        <td><%=c.getApMaterno()%></td>
-                                        <td><%=c.getTelefono()%></td>
-                                        <td><%=c.getEmail()%></td>
-                                        <td><a href="<%=request.getContextPath()%>/clientes/detalle?id=<%=c.getId()%>" class="btn btn-success">Detalle</a></td>
-                                        <td><a href="<%=request.getContextPath()%>/clientes/editar?id=<%=c.getId()%>" class="btn btn-primary">Editar</a></td>
-                                        <!-- <td><a href="<%=request.getContextPath()%>/clientes/eliminar?id=<%=c.getId()%>" class="btn btn-danger">Eliminar</a></td> -->
-                                        <td><button href="<%=request.getContextPath()%>/clientes/eliminar?id=<%=c.getId()%>" class="btn btn-danger" onclick="eliminarCliente(<%=c.getId()%>)">Eliminar</button></td>
+                                        <td><%=e.getId()%></td>
+                                        <td><%=e.getEscuelaId()%></td>
+                                        <td><%=e.getTipoUniforme()%></td>
+                                        <td><%=e.getDescripcion()%></td>
+                                        <td><%=e.getTipoMaterial()%></td>
+                                        <td><%=e.getColor()%></td>
+                                        <td><%=e.getPrecio()%></td>
+                                        <td><a href="<%=request.getContextPath()%>/uniformes/detalle?id=<%=e.getId()%>" class="btn btn-success">Detalle</a></td>
+                                        <td><a href="<%=request.getContextPath()%>/uniformes/editar?id=<%=e.getId()%>" class="btn btn-primary">Editar</a></td>
+                                        <td><button href="<%=request.getContextPath()%>/uniformes/eliminar?id=<%=e.getId()%>" class="btn btn-danger" onclick="eliminarEscuela(<%=e.getId()%>)">Eliminar</button></td>
                                     </tr>
                                     <% } %>
                             </tbody>
@@ -534,81 +536,81 @@
 
 
     <!-- *************************COMIENZA TARJETA FLOTANTE ****************************-->
-   <div class="modal fade" id="myModal" role="dialog">
-           <div class="modal-dialog">
-               <div class="modal-content">
-                   <div class="modal-header">
-                       <div class="row">
-                           <div class="col-md-12">
-                               <h4>Guardar Cliente</h4>
-                           </div>
-                       </div>
-                   </div>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Guardar Escuela</h4>
+                        </div>
+                    </div>
+                </div>
 
-                   <div class="modal-body">
-                       <div class="row">
-                           <div class="col-md-12">
-                               <div class="form-group">
-                                   <label for="">Nombre</label>
-                                   <input type="text" name="nombre" id="nombre" class="form-control">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="">Nombre</label>
+                                <input type="text" name="nombre" id="nombre" class="form-control">
 
-                               </div>
-
-
-                               <div class="form-group">
-                                   <label for="">Apellido Paterno</label>
-                                   <input type="text" name="apPaterno" id="apPaterno" class="form-control">
-
-                               </div>
+                            </div>
 
 
-                               <div class="form-group">
-                                   <label for="">Apellido Materno</label>
-                                   <input type="text" name="apMaterno" id="apMaterno" class="form-control">
+                            <div class="form-group">
+                                <label for="">Escudo</label>
+                                <input type="text" name="escudo" id="escudo" class="form-control">
 
-                               </div>
+                            </div>
 
-                               <div class="form-group">
-                                   <label for="">Telefono</label>
-                                   <input type="text" name="telefono" id="telefono" class="form-control">
 
-                               </div>
+                            <div class="form-group">
+                                <label for="">Direccion</label>
+                                <input type="text" name="direccion" id="direccion" class="form-control">
 
-                               <div class="form-group">
-                                   <label for="">Correo electronico</label>
-                                   <input type="text" name="email" id="email" class="form-control">
+                            </div>
 
-                               </div>
+                            <div class="form-group">
+                                <label for="">CCT</label>
+                                <input type="text" name="cct" id="cct" class="form-control">
 
-                           </div>
-                       </div>
-                   </div>
+                            </div>
 
-                   <div class="modal-footer">
-                       <div class="row">
-                           <div class="col-md-10 col-md-offset-1">
-                               <div class="col-md-4">
-                                   <button class="btn btn-success" onclick="btnGuardarDir();">Guardar</button>
-                               </div>
-                               <div class="col-md-4 col-md-offset-4">
-                                   <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            <div class="form-group">
+                                <label for="">Nivel Academico</label>
+                                <input type="text" name="nivel" id="nivel" class="form-control">
 
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            <div class="col-md-4">
+                                <button class="btn btn-success" onclick="btnGuardarDir();">Guardar</button>
+                            </div>
+                            <div class="col-md-4 col-md-offset-4">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
 <!--******************INICIO DE SCRIPTS ***********************************-->
 
  <script>
-    function eliminarCliente(clienteId){
+    function eliminarEscuela(escuelaId){
         Swal.fire({
-  title: "¿Estas seguro de eliminar el cliente?",
+  title: "¿Estas seguro de eliminar la escuela?",
   text: "No se podra revertir la acción",
   icon: "warning",
   showCancelButton: true,
@@ -620,11 +622,11 @@
 
     Swal.fire({
           title: "Eliminado!",
-          text: "El cliente ha sido eliminado!",
+          text: "La escuela ha sido eliminado!",
           icon: "success"
         });
     setTimeout(() => {
-        window.location.href = "<%= request.getContextPath() %>/clientes/eliminar?id=" + clienteId;
+        window.location.href = "<%= request.getContextPath() %>/escuelas/eliminar?id=" + escuelaId;
         }, 1000);
 
 

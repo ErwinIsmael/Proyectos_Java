@@ -1012,7 +1012,7 @@ textarea, label {
       </style>
 </head>
 <body>
-
+<div class="loader"></div>
     <div class='dashboard'>
         <div class="dashboard-nav">
             <header>
@@ -1034,20 +1034,27 @@ textarea, label {
                     <i class="fas fa-tachometer-alt"></i>
                     Pedidos
                 </a>
-                <a href="<%=request.getContextPath()%>/clientes/alta" class="dashboard-nav-item">
-                    <i class="fas fa-file-upload"></i>
-                    Alta Clientes
-                </a>
+
                 <div class='dashboard-nav-dropdown'>
                     <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
                         <i class="fas fa-photo-video"></i> Clientes
                     </a>
                 <div class='dashboard-nav-dropdown-menu'>
-                    <a href="#"  class="dashboard-nav-dropdown-item">All</a>
                     <a href="<%=request.getContextPath()%>/clientes/listar" class="dashboard-nav-dropdown-item">Lista de Clientes</a>
                     <a href="<%=request.getContextPath()%>/clientes/alta" class="dashboard-nav-dropdown-item">Alta de Clientes</a>
                 </div>
                 </div>
+
+                <div class='dashboard-nav-dropdown'>
+                    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                        <i class="fas fa-photo-video"></i> Escuelas
+                    </a>
+                <div class='dashboard-nav-dropdown-menu'>
+                    <a href="<%=request.getContextPath()%>/escuelas/listar" class="dashboard-nav-dropdown-item">Lista de Escuelas</a>
+                    <a href="<%=request.getContextPath()%>/escuelas/alta" class="dashboard-nav-dropdown-item">Alta de Escuelas</a>
+                </div>
+                </div>
+
                 <div class='dashboard-nav-dropdown'>
                     <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
                         <i class="fas fa-users"></i> Uniformes
@@ -1057,6 +1064,7 @@ textarea, label {
                         <a href="<%=request.getContextPath()%>/uniformes/alta" class="dashboard-nav-dropdown-item">Agregar nuevo uniforme</a>
                     </div>
                 </div>
+
                 <div class='dashboard-nav-dropdown'>
                     <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
                         <i class="fas fa-money-check-alt"></i> Pedidos
@@ -1075,7 +1083,7 @@ textarea, label {
             </nav>
         </div>
         <div class='dashboard-app'>
-
+            <header class='dashboard-toolbar'><a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a></header>
             <div class='dashboard-content'>
                 <div class="container">
                     <div class='card-header'>

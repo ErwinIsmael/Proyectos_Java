@@ -2,10 +2,14 @@
 <%@page import="java.util.*" %>
 <%@page import="com.jimenez.app.rutas.models.*" %>
 
+
+
 <%
-  //recuperamos la lista de choferes que seteamos en el request desde el servlet
-  List<Cliente> clientes =  (List<Cliente>) request.getAttribute("clientes");
+  Map<String, String> errores = (Map<String, String>) request.getAttribute("errores");
+  List<Escuela> escuelas =  (List<Escuela>) request.getAttribute("escuelas");
 %>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -393,10 +397,49 @@
               left: 0;
           }
       }
+
+
+
+
+
+
+
+
+
+
+      .loader {
+        width: 50px;
+        aspect-ratio: 1;
+        display: grid;
+        border: 4px solid #0000;
+        border-radius: 50%;
+        border-right-color: #25b09b;
+        animation: l15 1s infinite linear;
+      }
+      .loader::before,
+      .loader::after {
+        content: "";
+        grid-area: 1/1;
+        margin: 2px;
+        border: inherit;
+        border-radius: 50%;
+        animation: l15 2s infinite;
+      }
+      .loader::after {
+        margin: 8px;
+        animation-duration: 3s;
+      }
+      @keyframes l15{
+        100%{transform: rotate(1turn)}
+      }
+
+
+
+
       </style>
 </head>
 <body>
-<div class="loader"></div>
+    <div class="loader"></div>
     <div class='dashboard'>
         <div class="dashboard-nav">
             <header>
@@ -474,54 +517,97 @@
 
 
              <!-- **************************   CONTENIDO DE DASHBOARD ************************************  -->
-             <div class="row">
-                <div class="col-10">
-                    <h2>Listado de Clientes</h2>
-                </div>
-                <div class="col-10">
-                    <button class="btn btn-success btn-xs" style="margin-top: 30px;" onclick="getDireccion();">Alta cliente</button>
-                    <!-- <a href="<%=request.getContextPath()%>/clientes/alta" class="btn btn-success">Alta Cliente</a> -->
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped" id="Cadena" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Nombre</th>
-                                    <th>Ap. Paterno</th>
-                                    <th>Ap. Materno</th>
-                                    <th>Telefono</th>
-                                    <th>Correo electronico</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </thead>
 
-                            <tbody>
-                                <% for(Cliente c: clientes){ %>
-                                    <tr>
-                                        <td><%=c.getId()%></td>
-                                        <td><%=c.getNombre()%></td>
-                                        <td><%=c.getApPaterno()%></td>
-                                        <td><%=c.getApMaterno()%></td>
-                                        <td><%=c.getTelefono()%></td>
-                                        <td><%=c.getEmail()%></td>
-                                        <td><a href="<%=request.getContextPath()%>/clientes/detalle?id=<%=c.getId()%>" class="btn btn-success">Detalle</a></td>
-                                        <td><a href="<%=request.getContextPath()%>/clientes/editar?id=<%=c.getId()%>" class="btn btn-primary">Editar</a></td>
-                                        <!-- <td><a href="<%=request.getContextPath()%>/clientes/eliminar?id=<%=c.getId()%>" class="btn btn-danger">Eliminar</a></td> -->
-                                        <td><button href="<%=request.getContextPath()%>/clientes/eliminar?id=<%=c.getId()%>" class="btn btn-danger" onclick="eliminarCliente(<%=c.getId()%>)">Eliminar</button></td>
-                                    </tr>
-                                    <% } %>
-                            </tbody>
-                        </table>
+             <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Formulario Alta Uniforme</h2>
                     </div>
                 </div>
-            </div>
 
+                <br>
+                <% if(errores != null && errores.size()>0){ %>
+                    <ul class="alert alert-danger mx-5 px-5">
+                        <% for(String error: errores.values()){%>
+                        <li><%=error%></li>
+                        <%}%>
+                    </ul>
+                    <%}%>
+
+                <div class="row">
+                    <form action="<%=request.getContextPath()%>/escuelas/alta" method="post">
+                        <div class="col-md-12">
+
+
+                            <div class="form-group">
+                                <label for="">Escuela</label>
+                                    <select name="escuela" id="escuela" class="form-control">
+                                        <option value="">seleccionar</option>
+                                   <% for(Escuela e: escuelas){ %>
+                                        <option value="<%=e.getId()%>"><%=e.getNombre()%></option>
+                                   <%}%>
+                                </select>
+
+
+                            <div class="form-group">
+                                <label for="">Tipo Uniforme</label>
+                                <input type="text" name="tipoUniforme" id="tipoUniforme" class="form-control" value="${param.tipoUniforme}">
+                                <%
+                                    if(errores != null && errores.containsKey("tipoUniforme")){
+                                        out.println("<span class='text-danger'>"+ errores.get("tipoUniforme") +"</span>");
+                                    }
+                                %>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Descripcion</label>
+                                <input type="text" name="descripcion" id="descripcion" class="form-control" value="${param.descripcion}">
+                                <%
+                                    if(errores != null && errores.containsKey("descripcion")){
+                                        out.println("<span class='text-danger'>"+ errores.get("descripcion") +"</span>");
+                                    }
+                                %>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Tipo de Tela</label>
+                                <input type="text" name="tipoMaterial" id="tipoMaterial" class="form-control" value="${param.tipoMaterial}">
+                                <%
+                                    if(errores != null && errores.containsKey("tipoMaterial")){
+                                        out.println("<span class='text-danger'>"+ errores.get("tipoMaterial") +"</span>");
+                                    }
+                                %>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Color</label>
+                                <input type="text" name="color" id="color" class="form-control" value="${param.color}">
+                                <%
+                                    if(errores != null && errores.containsKey("color")){
+                                        out.println("<span class='text-danger'>"+ errores.get("color") +"</span>");
+                                    }
+                                %>
+                            </div>
+
+                              <div class="form-group">
+                                <label for="">Precio</label>
+                                <input type="text" name="precio" id="precio" class="form-control" value="${param.precio}">
+                                <%
+                                if(errores != null && errores.containsKey("precio")){
+                                  out.println("<span class='text-danger'>"+ errores.get("precio") +"</span>");
+                                  }
+                                %>
+                              </div>
+
+                            <div class="form-group">
+
+                                <button type="submit" class="btn btn-success">Guardar</button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
 <!-- ****************************** FIN CONTENIDO DASHBOARD ************************************-->
                     </div>
 
@@ -534,73 +620,6 @@
 
 
     <!-- *************************COMIENZA TARJETA FLOTANTE ****************************-->
-   <div class="modal fade" id="myModal" role="dialog">
-           <div class="modal-dialog">
-               <div class="modal-content">
-                   <div class="modal-header">
-                       <div class="row">
-                           <div class="col-md-12">
-                               <h4>Guardar Cliente</h4>
-                           </div>
-                       </div>
-                   </div>
-
-                   <div class="modal-body">
-                       <div class="row">
-                           <div class="col-md-12">
-                               <div class="form-group">
-                                   <label for="">Nombre</label>
-                                   <input type="text" name="nombre" id="nombre" class="form-control">
-
-                               </div>
-
-
-                               <div class="form-group">
-                                   <label for="">Apellido Paterno</label>
-                                   <input type="text" name="apPaterno" id="apPaterno" class="form-control">
-
-                               </div>
-
-
-                               <div class="form-group">
-                                   <label for="">Apellido Materno</label>
-                                   <input type="text" name="apMaterno" id="apMaterno" class="form-control">
-
-                               </div>
-
-                               <div class="form-group">
-                                   <label for="">Telefono</label>
-                                   <input type="text" name="telefono" id="telefono" class="form-control">
-
-                               </div>
-
-                               <div class="form-group">
-                                   <label for="">Correo electronico</label>
-                                   <input type="text" name="email" id="email" class="form-control">
-
-                               </div>
-
-                           </div>
-                       </div>
-                   </div>
-
-                   <div class="modal-footer">
-                       <div class="row">
-                           <div class="col-md-10 col-md-offset-1">
-                               <div class="col-md-4">
-                                   <button class="btn btn-success" onclick="btnGuardarDir();">Guardar</button>
-                               </div>
-                               <div class="col-md-4 col-md-offset-4">
-                                   <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </div>
-
 
 
 <!--******************INICIO DE SCRIPTS ***********************************-->
@@ -636,6 +655,7 @@
     }
 
 
+
      const mobileScreen = window.matchMedia("(max-width: 990px )");
      $(document).ready(function () {
          $(".dashboard-nav-dropdown-toggle").click(function () {
@@ -655,45 +675,6 @@
              }
          });
      });
-
-
-
-
-
-
-     function LimpiarDatos(){
-            $("#Calle").val("");
-            $("#Numero").val("");
-            $("#Colonia").val("");
-            $("#Ciudad").val("");
-            $("#Estado").val("");
-            $("#CP").val("");
-        }
-        function getDireccion(){
-            LimpiarDatos();
-            $('#myModal').modal('show');
-            var direccion = "";
-
-
-            swal({
-            title: "¿Estas seguro?",
-            text: "No podemos obtener datos sino proporciona una dirección",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonClass: "btn-warning",
-            confirmButtonText: "Si, quiero capturar la información",
-            cancelButtonText: "Cancelar",
-            closeOnConfirm: true,
-            closeOnCancel: true
-        }, function (isConfirm){
-            if (!isConfirm)
-            {
-                $('#myModal').modal('hide');
-            }
-        });
-
-        }
-
 
 
  </script>
