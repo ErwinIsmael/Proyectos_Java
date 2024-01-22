@@ -75,6 +75,5 @@ public class DetalleVentasController{
 		return respuesta;
 	}
 	
-	
 
 }

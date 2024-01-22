@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.jimenez.app.jpa.Dao.IArchivoDao;
 import com.jimenez.app.jpa.models.Archivo;
 
+@Service
 public class ArchivoService implements IService<Archivo>{
 
 	@Autowired

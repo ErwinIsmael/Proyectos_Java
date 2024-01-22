@@ -1,5 +1,7 @@
 package com.jimenez.app.jpa.models;
 
+import org.apache.tomcat.util.codec.binary.Base64;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,12 +25,27 @@ public class Archivo {
 	@Lob
 	@Column(name = "file")
 	private byte[] data;
-	
-	
-	
 
+	 @Column(name = "base64_contenido")
+	    private String base64Contenido;
+
+	    // Constructor, getters y setters...
+
+	    // Método para establecer los datos desde una cadena Base64
+	    public void setDataFromBase64() {
+	        this.data = Base64.decodeBase64(this.base64Contenido);
+	    }
+
+	    // Getter y Setter para el campo base64Contenido
+	    public String getBase64Contenido() {
+	        return base64Contenido;
+	    }
+
+	    public void setBase64Contenido(String base64Contenido) {
+	        this.base64Contenido = base64Contenido;
+	    }
 	
-	
+		
 	
 	
 }
