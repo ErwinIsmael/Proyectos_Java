@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.app.jpa.models.Producto;
 import com.example.app.jpa.services.IService;
-import com.example.app.jpa.services.ProductosService;
+
 
 @RestController
 @RequestMapping("/api/productos")
@@ -27,7 +27,7 @@ public class ProductosController {
 	
 	//atributos
 	@Autowired
-	IService<Producto> productosService;
+	IService<Producto, Producto> productosService;
 	
 	@PostMapping
 	public Map<String, String> guardar (@RequestBody Producto p){

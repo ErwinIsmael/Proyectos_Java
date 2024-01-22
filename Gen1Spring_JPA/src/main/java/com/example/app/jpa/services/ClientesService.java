@@ -11,7 +11,7 @@ import com.example.app.jpa.dao.IClientesDao;
 import com.example.app.jpa.models.Cliente;
 
 @Service
-public class ClientesService implements IService<Cliente>{
+public class ClientesService implements IService<Cliente, Cliente>{
 	
 	@Autowired
 	private IClientesDao clientesDao;

@@ -1,6 +1,7 @@
 package com.example.app.jpa.models;
 
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
@@ -48,6 +50,20 @@ public class Venta {
 	@JoinColumn(name = "cliente_id")
 	@ManyToOne
 	private Cliente cliente;
+	
+	//volteamos la relacion original con detalle venta
+	@OneToMany(mappedBy = "venta")
+	private List<DetalleVenta> detalle;
+	
+	
+
+	public List<DetalleVenta> getDetalle() {
+		return detalle;
+	}
+
+	public void setDetalle(List<DetalleVenta> detalle) {
+		this.detalle = detalle;
+	}
 
 	public Long getId() {
 		return id;

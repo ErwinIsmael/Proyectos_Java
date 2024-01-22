@@ -27,7 +27,7 @@ public class ClientesController {
 	
 	//atributos
 	@Autowired
-	IService<Cliente> clientesService;
+	IService<Cliente,Cliente> clientesService;
 	
 	@PostMapping
 	public Map<String, String> guardar (@RequestBody Cliente c){

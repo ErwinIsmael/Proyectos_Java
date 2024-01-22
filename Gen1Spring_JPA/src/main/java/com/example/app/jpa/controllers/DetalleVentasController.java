@@ -1,6 +1,6 @@
 package com.example.app.jpa.controllers;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.app.jpa.dao.IDetallesVentasDao;
+
+import com.example.app.jpa.dtos.DetalleVentaDTO;
 import com.example.app.jpa.models.DetalleVenta;
 import com.example.app.jpa.services.IService;
 
@@ -26,7 +27,7 @@ import com.example.app.jpa.services.IService;
 public class DetalleVentasController{
 	
 	@Autowired
-	IService<DetalleVenta> detatalleService;
+	IService<DetalleVenta, DetalleVentaDTO> detatalleService;
 	
 	@GetMapping
 	public List<DetalleVenta> listar(){
@@ -34,7 +35,7 @@ public class DetalleVentasController{
 	}
 	
 	@PostMapping
-	public Map<String, String> guardar (@RequestBody DetalleVenta ds){
+	public Map<String, String> guardar (@RequestBody DetalleVentaDTO ds){
 		detatalleService.guardar(ds);
 		Map<String, String> respuesta = new HashMap<String, String>();
 		respuesta.put("msg", "El detalle de ventas guardado correctamente!");
@@ -62,7 +63,7 @@ public class DetalleVentasController{
 	
 	
 	@PutMapping("/actualizar/{id}")
-	public Map<String, String> actualizar (@RequestBody DetalleVenta dc, @PathVariable (name = "id")Long id){
+	public Map<String, String> actualizar (@RequestBody DetalleVentaDTO dc, @PathVariable (name = "id")Long id){
 		Optional<DetalleVenta> detalleVenta = detatalleService.getById(id);
 		if (detalleVenta.isPresent()) {
 			dc.setId(id);

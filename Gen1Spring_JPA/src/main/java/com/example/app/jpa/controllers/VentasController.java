@@ -16,58 +16,71 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.app.jpa.models.Venta;
+import com.example.app.jpa.dtos.VentaDTO;
+import com.example.app.jpa.dtos.VentaListDTO;
 import com.example.app.jpa.services.IService;
 
 @RestController
 @RequestMapping("api/ventas")
 public class VentasController {
-	
 	@Autowired
-	IService<Venta> ventasService;
+	IService<VentaListDTO, VentaDTO> ventasService;
 	
 	@PostMapping
-	public Map<String, String> guardar (@RequestBody Venta v){
-		ventasService.guardar(v);
-		Map<String, String> respuesta = new HashMap<String, String>();
-		respuesta.put("msg", "Venta registrada!");
+	public Map<String, String> guardar(@RequestBody VentaDTO c)
+	{
+		ventasService.guardar(c);
+		Map<String, String> respuesta = new HashMap<>();
+		respuesta.put("msg", "Venta guardado exitosamente");
 		return respuesta;
+		
 	}
 	
 	@GetMapping
-	public List<Venta> listar(){
+	public List<VentaListDTO> listar()
+	{
 		return ventasService.listar();
 	}
 	
 	@GetMapping("/obtener/{id}")
-	public Venta obtenerPorId(@PathVariable (name = "id") Long id){
-		Optional<Venta> venta = ventasService.getById(id);
-		if (venta.isPresent()) {
+	public VentaListDTO obtenerPorId(@PathVariable(name = "id")Long id)
+	{
+		Optional<VentaListDTO> venta = ventasService.getById(id);
+		if(venta.isPresent())
+		{
 			return venta.get();
-		}else {
+		}
+		else
+		{
 			return null;
 		}
+		
 	}
 	
 	@DeleteMapping("/eliminar")
-	public Map<String, String> eliminar (@RequestParam (name = "id") Long id){
+	public Map<String, String> eliminar(@RequestParam(name = "id")Long id)
+	{
 		ventasService.eliminar(id);
-		Map<String, String> respuesta = new HashMap<>();
-		respuesta.put("msg", "Se elimino correctamente!");
+		Map<String, String>respuesta = new HashMap<>();
+		respuesta.put("msg", "Venta eliminado exitosamente");
 		return respuesta;
 	}
 	
 	@PutMapping("/actualizar/{id}")
-	public Map<String, String> actualizar (@RequestBody Venta v, @PathVariable(name = "id") Long id){
-		Optional<Venta> venta = ventasService.getById(id);
-		if (venta.isPresent()) {
-			v.setId(id);
-			ventasService.guardar(v);
-		} else {
-			throw new RuntimeException("La venta no existe en la BD!");
+	public Map<String, String> actualizar(@RequestBody VentaDTO c,@PathVariable(name = "id")Long id )
+	{
+		Optional<VentaListDTO> venta = ventasService.getById(id);
+		if(venta.isPresent())
+		{
+			c.setId(id);
+			ventasService.guardar(c);
+		}
+		else
+		{
+			throw new RuntimeException("El cliente no existe en la bd");
 		}
 		Map<String, String> respuesta = new HashMap<>();
-		respuesta.put("msg", "Venta actualizada correctamente");
+		respuesta.put("msg", "Venta actualizado correctamente");
 		return respuesta;
 	}
 }

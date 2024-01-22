@@ -11,7 +11,7 @@ import com.example.app.jpa.dao.IProductosDao;
 import com.example.app.jpa.models.Producto;
 
 @Service
-public class ProductosService implements IService<Producto>{
+public class ProductosService implements IService<Producto, Producto>{
 	
 	@Autowired
 	private IProductosDao productosDao;
