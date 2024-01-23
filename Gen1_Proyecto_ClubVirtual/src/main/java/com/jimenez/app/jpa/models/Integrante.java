@@ -2,6 +2,8 @@ package com.jimenez.app.jpa.models;
 
 import java.util.Date;
 
+import com.jimenez.app.jpa.enums.Genero;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -41,7 +43,7 @@ public class Integrante {
 	
 	//2
 	@Column(name = "genero")
-	private String genero;
+	private Genero genero;
 	
 	//2
 	@Column(name = "fecha_nacimiento")
@@ -95,11 +97,11 @@ public class Integrante {
 		this.apMaterno = apMaterno;
 	}
 
-	public String getGenero() {
+	public Genero getGenero() {
 		return genero;
 	}
 
-	public void setGenero(String genero) {
+	public void setGenero(Genero genero) {
 		this.genero = genero;
 	}
 

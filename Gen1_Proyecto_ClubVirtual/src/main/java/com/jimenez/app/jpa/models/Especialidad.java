@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 
 @Table(name = "bc_especialidades")
 @Entity
-public class Especialidades {
+public class Especialidad {
 	
 	//atributos -> ariables -> caracteristicas
 	@Column(name = "id")

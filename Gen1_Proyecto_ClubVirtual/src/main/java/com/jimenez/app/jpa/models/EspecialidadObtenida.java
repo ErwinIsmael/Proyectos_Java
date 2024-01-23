@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 
 @Table(name = "bc_especialidadesObtenidas")
 @Entity
-public class EspecialidadesObtenidas {
+public class EspecialidadObtenida {
 	//atributos -> varibales -> caracteristicas
 	
 	@Column(name = "id")
@@ -28,12 +28,11 @@ public class EspecialidadesObtenidas {
 	private Integrante integrante;
 	
 	//2
-	@JoinColumn(name = "instructor_id")
+	@JoinColumn(name = "especialidad_id")
 	@ManyToOne
-	private Instructor intructor;
+	private Especialidad especialidad;
 	
 	//Getter and setter
-
 	public Long getId() {
 		return id;
 	}
@@ -50,13 +49,15 @@ public class EspecialidadesObtenidas {
 		this.integrante = integrante;
 	}
 
-	public Instructor getIntructor() {
-		return intructor;
+	public Especialidad getEspecialidad() {
+		return especialidad;
 	}
 
-	public void setIntructor(Instructor intructor) {
-		this.intructor = intructor;
+	public void setEspecialidad(Especialidad especialidad) {
+		this.especialidad = especialidad;
 	}
+
+	
 	
 	
 	
