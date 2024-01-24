@@ -12,28 +12,34 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Num Afiliado</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>twitter</td>
+                  <tr *ngFor="let c of listaClientes">
+                    <th scope="row">{{ c.id }}</th>
+                    <td>{{ c.nombre }} {{ c.apPaterno }} {{ c.apMaterno }}</td>
+                    <td>{{ c.numAfiliado }}</td>
+                    <td>
+                      <a [routerLink]="['/clientes/detalle', c.id]" class="btn btn-xs btn-success">Detalle</a>
+                    </td>
+                    
+                    <td>
+                      <a [routerLink]="['/clientes/editar', c.id]"  class="btn btn-xs btn-primary">Editar</a>
+                    </td>
+
+                    <td>
+                      <button  class="btn btn-xs btn-danger" (click)="eliminar(c.id)">Eliminar</button>
+                    </td>
+
+                    <td>
+                      <a href="" class="btn btn-xs btn-warning">Ver ventas</a>
+                    </td>
                   </tr>
                 </tbody>
               </table>
