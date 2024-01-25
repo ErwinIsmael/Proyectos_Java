@@ -1,0 +1,59 @@
+<div class="container mt-5 ">
+    <div class="row justify-content-around">
+      
+
+      <div class="col-12 col-md-8 tarjetas">
+        <div class="row justify-content-around">
+        
+        
+            <div class="col-4 mb-3" *ngFor="let c of listaEspecialidades">
+            <div class="card text-center ">
+              <div class="card-header">
+                {{c.categoria}}
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">{{c.nombre}}</h5>
+                <button href="#" class="btn btn-primary">Detalles</button>
+              </div>
+            </div>
+          </div>
+
+
+
+
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="card border-0 tarjetas" >
+          <div class="card-body">
+            <h5 class="card-title">Especialidades</h5>
+
+            <form>
+              <div class="form-group">
+                <label for="nombreEspecialidad">Nombre de la Especialidad:</label>
+                <input type="text" class="form-control" id="nombreEspecialidad" placeholder="Ingrese el nombre" #nombre>
+              </div>
+
+              <div class="form-group">
+                <label for="nombreEspecialidad">Categoria</label>
+                <select class="form-select" aria-label="small">
+                    <option id="categoria" *ngFor="let a of listaCategorias" #categoria>{{a}}</option>
+                  </select>
+              </div>
+
+              <div class="form-group">
+                <label for="requisitosEspecialidad">Requisitos de la Especialidad:</label>
+                <textarea class="form-control" id="requisitosEspecialidad" rows="4" placeholder="Ingrese los requisitos" #requisitos></textarea>
+              </div>
+              <div class="text-center">
+                <br>
+                <button class="btn btn-success" (click)="guardarEspecialidad()">Guardar</button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
